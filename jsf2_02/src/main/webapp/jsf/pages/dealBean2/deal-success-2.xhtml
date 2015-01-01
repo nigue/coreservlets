@@ -1,0 +1,18 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/page-template.xhtml">
+    <ui:define name="title">Success: Daily Deal Ordered</ui:define>
+
+    <ui:define name="bodyContent">
+        <div align="center">
+            <ul>
+                <li>Account ID: #{dealBean2.accountId}</li>
+                <li>Name: #{dealBean2.account.fullName}</li>
+                <li>Book ordered: <i>#{dealBean2.todaysDeal.title}</i></li>
+                <li>Number purchased: #{dealBean2.count}</li>
+                <li>Balance after purchase: #{dealBean2.account.balanceDollars}</li>
+            </ul>
+        </div>
+    </ui:define>
+
+</ui:composition>

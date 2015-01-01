@@ -1,0 +1,17 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/page-template.xhtml">
+    <ui:define name="title">Error</ui:define>
+
+    <ui:define name="bodyContent">
+        <h2>You must supply your account ID and the number of books to purchase.</h2>
+
+        <ui:include src="/snippets/try-again-2.xhtml"/>
+
+        <p><small>Note: using a separate error page for missing data is
+                not a good approach. Instead, you should redisplay the input form
+                and mark missing data with error messages. This approach is shown
+                in an <a href="validate-data.jsf">upcoming example</a>.</small></p>
+    </ui:define>
+
+</ui:composition>

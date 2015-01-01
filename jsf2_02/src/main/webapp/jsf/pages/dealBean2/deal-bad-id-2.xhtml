@@ -1,0 +1,12 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/page-template.xhtml">
+    <ui:define name="title">Unknown ID</ui:define>
+
+    <ui:define name="bodyContent">
+        <h2>#{dealBean2.accountId} is not a valid account ID.</h2>
+
+        <ui:include src="/snippets/try-again-3.xhtml"/>
+    </ui:define>
+
+</ui:composition>

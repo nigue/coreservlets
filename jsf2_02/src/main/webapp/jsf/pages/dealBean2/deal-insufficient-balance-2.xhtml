@@ -1,0 +1,14 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+                xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+                template="/templates/page-template.xhtml">
+    <ui:define name="title">Insufficient Balance</ui:define>
+
+    <ui:define name="bodyContent">
+        <h2>Balance for #{dealBean2.account.fullName}
+            (#{dealBean2.account.balanceDollars}) is 
+            too low. #{dealBean2.purchaseDollars} needed.</h2>
+
+        <ui:include src="/snippets/try-again-2.xhtml"/>
+    </ui:define>
+
+</ui:composition>
