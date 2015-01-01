@@ -1,0 +1,70 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>JSF 2.2 Whirlwind Tour</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+    </h:head>
+    <h:body>
+        
+        <h1 class="title">JSF 2.2 Whirlwind Tour</h1>
+        <p>This section gives a quick example of each of the most basic JSF 2.2
+            capabilities. This tutorial section gives only brief examples with very limited
+            explanation, but each of the topics is covered in detail in later sections
+            of the <a href="http://www.coreservlets.com/JSF-Tutorial/jsf2/">JSF 2.2 tutorial</a>
+            and the <a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">PrimeFaces tutorial</a>.
+            Also, the topics given here are only the most basic ones: the full tutorial covers many other
+            important but not-quite-as-fundamental topics such as looping with ui:repeat, data
+            tables, composite components (four sections!), property files, I18N, GUI events,
+            view parameters, and so on.</p>
+        <p>Click on one of the links below to get a quick example of the
+            capability.</p>
+        <ul>
+            <li><a href="jsf/setup.jsf">setup.jsf</a> --
+                Set up your IDE and project to use JSF 2.2.<br/>
+                <font size="-1">For details, see the "Installation, Setup, and Getting Started" section.</font></li>
+            <li><a href="jsf/test-tags.jsf">test-tags.jsf</a> --
+                Verify that h:commandButton and h:inputText are rendered as
+                a button and a textfield, respectively.<br/>
+                <font size="-1">For details, see the "Installation, Setup, and Getting Started" section.</font></li>
+            <li><a href="jsf/navigate.jsf">navigate.jsf</a> --
+                Use Java to navigate to a results page. Uses the return
+                value of the "action" method as the base name of the page to 
+                navigate to.<br/>
+                <font size="-1">For details on declaring beans and implicit navigation (where the return
+                    value of the action controller method is the base name of the results page), see the 
+                    "Programming Basics" section.
+                    For fancier navigation that uses rules defined in faces-config.xml, see
+                    the section entitled "Explicit Page Navigation and faces-config.xml".</font></li>
+            <li><a href="jsf/bean-properties.jsf">bean-properties.jsf</a> --
+                Represent form data with bean properties.<br/>
+                <font size="-1">For details on beans, see the Managed Beans 1 and Managed Beans 2 sections.</font></li>
+            <li><a href="jsf/business-logic.jsf">business-logic.jsf</a> --
+                Apply business logic to calculate results that are
+                derived from values passed in by user.<br/>
+                <font size="-1">For details, see the banking example of the Managed Beans 1 section.</font></li>
+            <li><a href="jsf/page-templating.jsf">page-templating.jsf</a> --
+                Use page templates and include files to avoid repeating
+                facelets code.<br/>
+                <font size="-1">For details, see the Page Templating section.</font></li>
+            <li><a href="jsf/validate-data.jsf">validate-data.jsf</a> --
+                Validate the input data, and display error messages on
+                input form if data is in wrong format.<br/>
+                <font size="-1">For details, see the section on validating user input.</font></li>
+            <li><a href="jsf/ajax.jsf">ajax.jsf</a> --
+                Ajaxify the pages so that results can be
+                inserted into current page without doing
+                a complete page reload.<br/>
+                <font size="-1">For details, see the Ajax section.</font></li>  
+            <li><a href="jsf/primefaces.jsf">primefaces.jsf</a> --
+                Make your GUI elements prettier by using PrimeFaces.<br/>
+                <font size="-1">For details, see the separate
+                    <a href="http://www.coreservlets.com/JSF-Tutorial/primefaces/">PrimeFaces tutorial series</a>.</font></li> 
+        </ul>
+
+
+        <ui:include src="/templates/common/training-course-ad.xhtml"/>
+    </h:body></html>
+
