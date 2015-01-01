@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<title>Success: Daily Deal Ordered</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<div align="center">
+<h1 class="title">Success: Daily Deal Ordered</h1>
+<ul>
+  <li>Account ID: #{dealBean1.accountId}</li>
+  <li>Name: #{dealBean1.account.fullName}</li>
+  <li>Book ordered: <i>#{dealBean1.todaysDeal.title}</i></li>
+  <li>Number purchased: #{dealBean1.count}</li>
+  <li>Balance after purchase: #{dealBean1.account.balanceDollars}</li>
+</ul>
+</div>
+</h:body></html>
