@@ -1,0 +1,42 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:f="http://xmlns.jcp.org/jsf/core"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/page-template.xhtml">
+<ui:define name="title">Today's Daily Deal</ui:define>
+
+<ui:define name="bodyContent">
+<div align="center">
+<h2>Today's daily book deal is
+<i>#{dealBean3.todaysDeal.title}</i> at a rock-bottom
+price of $#{dealBean3.todaysDeal.price}.</h2>
+<p>(Valid account IDs are a1234, a1235, and a1236)</p>
+
+<fieldset>
+<legend>Validate the Input Data</legend>
+<h:form>
+<h:panelGrid columns="3" styleClass="formTable">
+  Account ID: 
+  <h:inputText value="#{dealBean3.accountId}" id="account-id"
+               required="true"
+               requiredMessage="Must supply account ID"/>
+  <h:message for="account-id"/>
+
+  Number to Purchase: 
+  <h:inputText value="#{dealBean3.count}" id="count"
+               required="true"
+               requiredMessage="Must specify count"
+               converterMessage="Count must be a whole number"
+               validatorMessage="Count must be greater than 0">
+    <f:validateLongRange minimum="1"/>
+  </h:inputText>
+  <h:message for="count"/>
+</h:panelGrid>
+<h:commandButton value="Purchase" 
+                 action="#{dealBean3.buyDailyDeal}"/>
+</h:form>
+</fieldset>
+</div>
+</ui:define>
+
+</ui:composition>

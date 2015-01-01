@@ -1,0 +1,30 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/templates/page-template.xhtml">
+<ui:define name="title">Today's Daily Deal</ui:define>
+
+<ui:define name="bodyContent">
+<div align="center">
+<h2>Today's daily book deal is
+<i>#{dealBean2.todaysDeal.title}</i> at a rock-bottom
+price of $#{dealBean2.todaysDeal.price}.</h2>
+
+<fieldset>
+<legend>Use Page Templating to Avoid Repeating Facelets Code</legend>
+<h:form>
+<h:panelGrid columns="2" styleClass="formTable">
+  Account ID: 
+  <h:inputText value="#{dealBean2.accountId}"/>
+
+  Number to Purchase: 
+  <h:inputText value="#{dealBean2.countString}"/>
+</h:panelGrid>
+<h:commandButton value="Purchase" 
+                 action="#{dealBean2.buyDailyDeal}"/>
+</h:form>
+</fieldset>
+</div>
+</ui:define>
+
+</ui:composition>

@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:p="http://primefaces.org/ui">
+    <h:head>
+        <title>Today's Daily Deal</title>
+    </h:head>
+    <h:body>
+        <div align="center">
+            <h1 class="ui-widget-header ui-corner-all">Today's Daily Deal</h1>
+            <h2>Today's daily book deal is
+                <i>#{dealBean5.todaysDeal.title}</i> at a rock-bottom
+                price of $#{dealBean5.todaysDeal.price}.</h2>
+            <p>(Valid account IDs are a1234, a1235, and a1236)</p>
+
+            <p:fieldset legend="Use PrimeFaces to Make GUI Elements Prettier">
+                <h:form>
+                    <h:panelGrid columns="2" styleClass="formTable">
+                        Account ID: 
+                        <p:inputMask mask="a9999"
+                                     value="#{dealBean5.accountId}" 
+                                     required="true"
+                                     requiredMessage="Must supply account ID"/>
+
+                        Number to Purchase: 
+                        <p:spinner value="#{dealBean5.count}" 
+                                   required="true"
+                                   min="1"/>
+                    </h:panelGrid>
+                    <p:commandButton value="Purchase" 
+                                     action="#{dealBean5.buyDailyDeal}"
+                                     process="@form"
+                                     update="messages"
+                                     oncomplete="PF('dlg').show()"/>
+                    <p:dialog header="Attention" widgetVar="dlg" width="350">
+                        <p:messages id="messages"/>
+                    </p:dialog>
+                </h:form>
+            </p:fieldset>
+        </div>
+    </h:body></html>
