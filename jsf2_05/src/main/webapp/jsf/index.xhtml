@@ -1,0 +1,24 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head><title>JSF 2: Programming Basics</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+    </h:head>
+    <h:body>
+        <h1 class="title">JSF 2: Programming Basics</h1>
+        <p>Click on one of the following links.</p>
+        <ul>
+            <li><a href="jsf/start-page.jsf">start-page.jsf</a><br/>
+                Example of the basic use of @ManagedBean and default mappings of outcomes to results pages.</li>
+            <li><a href="jsf/choose-language.jsf">choose-language.jsf</a><br/>
+                Simplified example of the use of beans to handle request parameters. The next section
+                on managed beans has a more realistic example where the action controller method also
+                looks up properties derived from the input values (e.g., the customer's name and balance
+                are not passed in by the end user, but instead are derived from the customer ID the end user passes in).</li>
+        </ul>
+
+
+        <ui:include src="/snippets/training-course-ad.xhtml"/>
+    </h:body></html>
