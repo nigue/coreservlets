@@ -1,0 +1,124 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+    <head>
+        <title>Sample Form Controls</title>
+    </head>
+
+    <body bgcolor="#fdf5e6">
+        <h2 align="center">Sample Form Controls</h2>
+
+        <form action="http://localhost:8080/jsf2_06"
+              method="post">
+            <center>
+                Textfield:
+                <input type="text" name="firstName" value="Regular Text"/>
+
+                <p/>
+                <hr/>
+                <p/>
+                Enter Password:
+                <input type="password" name="password" value="Secret"/>
+
+                <p/>
+                <hr/>
+                <p/>
+                <p/>
+                Post your feedback here:<br/>
+                <textarea name="HTML" rows="5" cols="40">
+What did you think of this
+article? Post your comments here
+then send it to our editors.
+                </textarea>
+                <br/>
+                <input type="submit" value="Send to Editors"/>
+            </center>
+
+            <p/>
+            <hr/>
+            <p/>
+            Default submit button:
+            <p/>
+            <input type="submit"/> 
+            <p/>
+            Submit button with SIZE of 300 pixels. (Neither Netscape nor
+            Internet Explorer support sizing buttons, but the HTML
+            4.0 specification says it should be.)
+            <p/>
+            <input type="submit" size="300"/>
+
+
+            <p/>
+            <hr/>
+            <p/>
+            <center>
+                Item:
+                <input type="text" name="Item" value="4 TeraByte iPod"/>
+                <br/>
+                <input type="submit" name="Add"
+                       value="Add Item to Cart"/>
+                <input type="submit" name="Delete"
+                       value="Delete Item from Cart"/>
+
+                <p/>
+                <hr/>
+                <p/>
+                <input type="checkbox" name="noEmail" checked="checked"/>
+                Check here if you do <i>not</i> want to 
+                get our email newsletter
+
+            </center>
+
+            <p/>
+            <hr/>
+            <p/>
+            <dl>
+                <dt>Credit Card:</dt>
+                <dd><input type="radio" name="creditCard" value="visa"/>
+                    Visa</dd>
+                <dd><input type="radio" name="creditCard" value="mastercard"/>
+                    Master Card</dd>
+                <dd><input type="radio" name="creditCard" value="java"
+                           checked="checked"/>
+                    Java Smart Card</dd>
+                <dd><input type="radio" name="creditCard" value="amex"/>
+                    American Express</dd>
+                <dd><input type="radio" name="creditCard" value="discover"/>
+                    Discover</dd>
+            </dl>
+
+            <p/>
+            <hr/>
+            <p/>
+            Favorite language: 
+            <select name="language">
+                <option value="c">C</option>
+                <option value="c++">C++</option>
+                <option value="java" selected="selected">Java</option>
+                <option value="javascript">JavaScript</option>
+                <option value="perl">Perl</option>
+                <option value="ruby">Ruby</option>
+            </select>
+            <br/><br/><br/><br/><br/><br/><br/><br/>
+
+            Languages you know:<br/>
+            <select name="language" multiple="multiple" size="6">
+                <option value="c">C</option>
+                <option value="c++">C++</option>
+                <option value="java" selected="selected">Java</option>
+                <option value="javascript">JavaScript</option>
+                <option value="perl" selected="selected">Perl</option>
+                <option value="ruby">Ruby</option>
+            </select>
+
+        </form>
+        <p/>
+
+
+        <form action="http://localhost:8080/jsf2_06"
+              enctype="multipart/form-data">
+            Enter data file below:<br/>
+            <input type="file" name="fileName"/>
+        </form>
+
+    </body></html>
