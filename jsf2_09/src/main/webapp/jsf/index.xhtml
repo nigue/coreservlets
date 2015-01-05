@@ -1,0 +1,32 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>JSF Managed Beans II</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">JSF Managed Beans II (Prepopulating Forms, plus Select Menus)</h1>
+<p>
+Click to try the example.
+</p>
+<ul>
+  <li><a href="jsf/selections-1.jsf">selections-1.jsf</a><br/>
+      Example of menus, list boxes, and radio buttons. For the options, each of the
+      three can use arrays, lists, maps, or collections of Java objects to supply the options.</li>
+ <li><a href="jsf/selections-2.jsf">selections-2.jsf</a><br/>
+      Same functionality as the first version, but uses custom bean names.</li>
+ <li><a href="jsf/selections-3.jsf">selections-3.jsf</a><br/>
+      Similar to the first version, but prepopulates the selections by
+      having the initial getter method return a value that matches one of the choices.</li>
+ <li><a href="jsf/multi-selections.jsf">multi-selections.jsf</a><br/>
+      Quick example of the hard-to-use h:selectManyMenu.</li>
+  <li><a href="jsf/study-plan-input.jsf">study-plan-input.jsf</a><br/>
+      Example of customized programming language study plan. 
+      Illustrates prepopulating various input fields. </li>
+</ul>
+
+
+<ui:include src="/snippets/training-course-ad.xhtml"/>
+</h:body></html>
