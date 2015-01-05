@@ -1,0 +1,22 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Your Customized Study Plan</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Your Customized Study Plan</h1>
+<p>Our highly sophisticated artificial intelligence software
+has thoroughly analyzed your background. We recommend
+that you study the following languages.</p>
+<ul>
+  <ui:repeat var="language" 
+             value="#{trainingForm.languagesToStudy}">
+    <li>#{language}</li>
+  </ui:repeat>
+</ul>
+<p>A detailed syllabus, along with payment options, has
+been sent to #{trainingForm.emailAddress}.</p>
+</h:body></html>

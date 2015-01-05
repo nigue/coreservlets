@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Selecting Elements from Choices</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<div align="center">
+<h1 class="title">Selecting Elements from Choices</h1>
+<p>Version 2: Using Custom Bean Names</p>
+
+<h:form>
+<table class="selections" border="1">
+
+<tr>
+  <th>h:selectOneMenu<br/>(Uses Array of Strings)</th>
+  <th>h:selectOneListbox<br/>(Uses List of Strings)</th>
+  <th>h:selectOneRadio<br/>(Uses Map)</th>
+  <th>h:selectOneMenu<br/>(Uses List of POJOs)</th>
+</tr>
+
+<tr>
+  <td>Choose Color 1:<br/>
+      <h:selectOneMenu value="#{myBean.color1}">
+        <f:selectItems value="#{colorOptions.colorNames}"/>
+      </h:selectOneMenu>
+   </td>
+   <td>Choose Color 2:<br/>
+      <h:selectOneListbox value="#{myBean.color2}">
+        <f:selectItems value="#{colorOptions.colorValues}"/>
+      </h:selectOneListbox></td>
+  <td>Choose Color 3:<br/>
+      <h:selectOneRadio value="#{myBean.color3}">
+        <f:selectItems value="#{colorOptions.colorMap}"/>
+      </h:selectOneRadio></td>
+   <td>Choose Color 4:<br/>
+      <h:selectOneListbox value="#{myBean.color4}">
+        <f:selectItems value="#{colorOptions.colorList}"
+                       var="color" 
+                       itemLabel="#{color.colorName}"
+                       itemValue="#{color.colorValue}"/>
+      </h:selectOneListbox></td>
+</tr>
+  
+<tr>
+  <td colspan="3"><h:commandButton action="#{myBean.showColors}"
+                                   value="Show Selected Colors"/></td>
+</tr>
+</table>
+</h:form>
+</div></h:body></html>
