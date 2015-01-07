@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Search Engine Interface</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<div align="center">
+<h1 class="title">Search Engine Interface</h1>
+<br/>
+<fieldset>
+<legend>Use Existing Search Engine</legend>
+<h:form>
+  Search String: 
+  <h:inputText value="#{searchController.searchString}"/><br/>
+  Search Engine: 
+  <h:selectOneMenu value="#{searchController.searchEngine}">
+    <f:selectItems value="#{searchController.searchEngineNames}"/>
+  </h:selectOneMenu><br/>
+  <h:commandButton value="Search" 
+                   action="#{searchController.doSearch}"/>
+</h:form>
+</fieldset>
+</div></h:body></html>

@@ -1,0 +1,54 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <managed-bean>
+        <managed-bean-name>messageHandler</managed-bean-name>
+        <managed-bean-class>
+            coreservlets.SimpleController2
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+    <navigation-rule>
+        <from-view-id>jsf/start-page-1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>too-short</from-outcome>
+            <to-view-id>jsf/pages/simpleController/error-message.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>page1</from-outcome>
+            <to-view-id>jsf/pages/simpleController/result-page-1.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>page2</from-outcome>
+            <to-view-id>jsf/pages/simpleController/result-page-2.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>page3</from-outcome>
+            <to-view-id>jsf/pages/simpleController/result-page-3.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>jsf/start-page-2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>too-short</from-outcome>
+            <to-view-id>jsf/pages/simpleController/error-message.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>page1</from-outcome>
+            <to-view-id>jsf/pages/simpleController2/message-page.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>page2</from-outcome>
+            <to-view-id>jsf/pages/simpleController2/message-page.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>page3</from-outcome>
+            <to-view-id>jsf/pages/simpleController2/message-page.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

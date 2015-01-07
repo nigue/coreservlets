@@ -1,0 +1,46 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>EL Operators</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">EL Operators</h1>
+<br/>
+<table border="1" align="center">
+  <tr><th colspan="2">Arithmetic Operators</th>
+      <th colspan="2">Relational Operators</th></tr>
+  <tr><th>Expression</th><th>Result</th><th>Expression</th><th>Result</th></tr>
+  <tr align="center">
+    <td>\#{3+2-1}</td><td>#{3+2-1}</td>  <!-- Addition/Subtraction -->
+    <td>\#{1 lt 2}</td><td>#{1 lt 2}</td></tr>     <!-- Numerical comparison -->
+  <tr align="center">
+    <td>\#{"1"+2}</td><td>#{"1"+2}</td>     <!-- String conversion -->
+    <td>\#{"a" lt "b"}</td><td>#{"a" lt "b"}</td></tr> <!-- Lexical comparison -->
+  <tr align="center">
+    <td>\#{1 + 2*3 + 3/4}</td><td>#{1 + 2*3 + 3/4}</td>  <!-- Mult/Div -->
+    <td>\#{2/3 ge 3/2}</td><td>#{2/3 ge 3/2}</td></tr>       <!-- ge -->
+  <tr align="center">
+    <td>\#{3%2}</td><td>#{3%2}</td>                 <!-- Modulo -->
+    <td>\#{3/4 == 0.75}</td><td>#{3/4 == 0.75}</td></tr> <!-- Numeric = -->
+  <tr align="center">
+    <!-- div and mod are alternatives to / and % -->
+    <td>\#{(8 div 2) mod 3}</td><td>#{(8 div 2) mod 3}</td>
+    <!-- Compares with "equals" but returns false for null -->
+    <td>\#{null == "test"}</td><td>#{null == "test"}</td></tr>
+  <tr><th colspan="2">Logical Operators</th>
+      <th colspan="2"><code>empty</code> Operator</th></tr>
+  <tr><th>Expression</th><th>Result</th><th>Expression</th><th>Result</th></tr>
+  <tr align="center">
+    <td>\#{(1 lt 2) and (4 lt 3)}</td><td>#{(1 lt 2) and (4 lt 3)}</td> <!--AND-->
+    <td>\#{empty ""}</td><td>#{empty ""}</td></tr> <!-- Empty string -->
+  <tr align="center">
+    <td>\#{(1 lt 2) or (4 lt 3)}</td><td>#{(1 lt 2) or (4 lt 3)}</td> <!--OR-->
+    <td>\#{empty null}</td><td>#{empty null}</td></tr> <!-- null -->
+  <tr align="center">
+    <td>\#{!(1 lt 2)}</td><td>#{!(1 lt 2)}</td>  <!-- NOT -->
+    <!-- Handles null or empty string in request param -->
+    <td>\#{empty param.blah}</td><td>#{empty param.blah}</td></tr>
+</table>
+</h:body></html>

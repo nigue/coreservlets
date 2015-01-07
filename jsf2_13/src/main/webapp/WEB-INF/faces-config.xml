@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <!-- Declare properties files. Note that "messages1" for base-name really
+    means WEB-INF/classes/messages1.properties (src/messages1.properties in
+    the Eclipse project) -->
+    <!-- Declare properties files. Note that "messages1" for base-name really
+    means WEB-INF/classes/messages1.properties (src/messages1.properties in
+    the Eclipse project) -->
+    <application>
+        <resource-bundle>
+            <base-name>messages1</base-name>
+            <var>msgs1</var>
+        </resource-bundle>
+        <resource-bundle>
+            <base-name>messages2</base-name>
+            <var>msgs2</var>
+        </resource-bundle>
+    
+        <resource-bundle>
+            <base-name>winners</base-name>
+            <var>winMessages</var>
+        </resource-bundle>
+    </application>
+  
+    <navigation-rule>
+        <from-view-id>jsf/navigation/simple-messages.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success1</from-outcome>
+            <to-view-id>jsf/pages/simpleMessages/success1.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/parameterized-messages.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success2</from-outcome>
+            <to-view-id>jsf/pages/parameterizedMessages/success2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/internationalized-messages.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>success3</from-outcome>
+            <to-view-id>jsf/pages/internationalizedMessages/success3.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

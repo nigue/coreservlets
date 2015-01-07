@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>JSF 2: Explicit Page Navigation and Basic Use of faces-config.xml</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">JSF 2: Explicit Page Navigation and Basic Use of faces-config.xml</h1>
+<br/>
+<p>Click on one of the following links.</p>
+<ul>
+  <li><a href="jsf/start-page-1.jsf">start-page-1.jsf</a><br/>
+      Showing the message (3 possible success pages), using explicit navigation rules in faces-config.xml.</li>
+  <li><a href="jsf/start-page-2.jsf">start-page-2.jsf</a><br/>
+      Showing the message (combined success page), using explicit navigation rules
+      and explicit bean declarations in faces-config.xml.</li>
+  <li><a href="jsf/page-a.jsf">page-a.jsf</a><br/>
+      Simple example of static navigation.</li>
+</ul>
+
+
+<ui:include src="/snippets/training-course-ad.xhtml"/>
+</h:body></html>

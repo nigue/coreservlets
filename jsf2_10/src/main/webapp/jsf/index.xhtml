@@ -1,0 +1,39 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>Managed Beans III (Advanced Features)</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Managed Beans III (Advanced Features)</h1>
+<p>
+Click on one of the following links.
+</p>
+<ul>
+  <li><a href="jsf/bank-lookup.jsf">bank-lookup.jsf</a><br/>
+      Unchanged banking example from the Managed Beans I lecture.
+      Included here only to compare to bank-lookup2.jsf, which uses
+      session scope instead of request scope.</li>
+  <li><a href="jsf/bank-lookup2.jsf">bank-lookup2.jsf</a><br/>
+      Similar to the previous banking example, but uses session scope.
+      Visit the input form in the same browser session and it will "remember" your ID.</li>
+  <li><a href="jsf/bank-lookup3.jsf">bank-lookup3.jsf</a><br/>
+      Similar to the previous banking example, but in addition to session scope,
+      it uses redirects instead of forwards to go to the results pages.</li>
+  <li><a href="jsf/search-engine-form.jsf">search-engine-form.jsf</a><br/>
+      Example that uses the HttpServletResponse object to do
+      outside-of-JSF redirects, making an interface that lets you search
+      Google, Bing, Yahoo, etc.</li>
+  <li><a href="jsf/bank-lookup4.jsf">bank-lookup4.jsf</a><br/>
+      Similar to the original banking example, but uses dependency injection
+      for the lookup service, so that it is easier to change the lookup service
+      used (e.g., from simple hard-coded one to real one that uses a database) without
+      changing the any of the code in the main class. If you want fancy dependency injection,
+      JSF 2 also has good integration with Spring.</li>
+</ul>
+
+
+<ui:include src="/snippets/training-course-ad.xhtml"/>
+</h:body></html>

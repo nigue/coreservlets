@@ -1,0 +1,21 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Employee Accepted</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Employee Accepted</h1>
+<br/>
+<ul>
+  <li>Employee's first name: 
+      #{employee1.name.firstName}</li>
+  <li>Employee's last name: 
+      #{employee1.name.lastName}</li>
+  <li>Name of employee's company: 
+      #{employee1.company.companyName}</li>
+  <li>Business area of employee's company: 
+      #{employee1.company.business}</li>
+</ul>
+</h:body></html>

@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>JSF 2.0: Managed Beans</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<div align="center">
+<h1 class="title">JSF 2: Managed Beans</h1>
+<br/>
+<fieldset>
+<legend>Bank Customer Lookup (with Dependency Injection)</legend>
+<h:form>
+  Customer ID: 
+  <h:inputText value="#{bankingBean4.customerId}"/><br/>
+  Password: 
+  <h:inputSecret value="#{bankingBean4.password}"/><br/>
+  <h:commandButton value="Show Current Balance" 
+                   action="#{bankingBean4.showBalance}"/>
+</h:form>
+</fieldset>
+</div></h:body></html>

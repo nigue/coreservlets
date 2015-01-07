@@ -1,0 +1,18 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Simple Page to Illustrate Testing EL</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Simple Page to Illustrate Testing EL</h1>
+<br/>
+<ul>
+  <li>Message: #{simpleBean.message}</li>
+  <li>First color: #{simpleBean.colors[0]}</li>
+</ul>
+<p>The point is that you can play around and experiment with the expression language 
+without making a form, an action controller method, or a results page. All you need
+is a simple bean and one stand-alone page to test it.</p>
+</h:body></html>

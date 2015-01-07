@@ -1,0 +1,53 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Using Collections</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Using Collections</h1>
+<h3>Choose Purchases</h3>
+<h:form>
+<ul>
+<li><b>Cheap Items</b>
+<ol>
+<li>
+  <h:inputText value="#{purchases.cheapItems[0]}"/>
+</li>
+<li>
+  <h:inputText value="#{purchases.cheapItems[1]}"/>
+</li>
+<li>
+  <h:inputText value="#{purchases.cheapItems[2]}"/>
+</li>
+</ol></li>
+<li><b>Medium Items</b>
+<ol>
+<li>
+  <h:inputText value="#{purchases.mediumItems[0]}"/>
+</li>
+<li>
+  <h:inputText value="#{purchases.mediumItems[1]}"/>
+</li>
+<li>
+  <h:inputText value="#{purchases.mediumItems[2]}"/>
+</li>
+</ol></li>
+<li><b>Valuable Items</b>
+<ul>
+<li>Low: 
+  <h:inputText value='#{purchases.valuableItems["low"]}'/>
+</li>
+<li>Medium:
+  <h:inputText value='#{purchases.valuableItems["medium"]}'/>
+</li>
+<li>High:
+  <h:inputText value='#{purchases.valuableItems["high"]}'/>
+</li>
+</ul></li>
+</ul>
+<h:commandButton value="Purchase" 
+                 action="#{purchases.purchaseItems}"/>
+</h:form>
+</h:body></html>

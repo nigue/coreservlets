@@ -1,0 +1,27 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Submitting Bean Properties</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Submitting Bean Properties</h1>
+<div align="center">
+<h:form>
+<h:panelGrid columns="2" styleClass="formTable">
+Your first name:
+<h:inputText value="#{employee1.name.firstName}"/>
+Your last name: 
+<h:inputText value="#{employee1.name.lastName}"/>
+Name of your company: 
+<h:inputText value="#{employee1.company.companyName}"/>
+Business area of your company: 
+<h:inputText value="#{employee1.company.business}"
+             size="38"/>
+</h:panelGrid>
+<h:commandButton value="Process" 
+                 action="#{employee1.processEmployee}"/>
+</h:form>
+</div>
+</h:body></html>

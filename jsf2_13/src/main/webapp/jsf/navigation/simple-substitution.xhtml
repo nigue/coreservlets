@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Winners</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Winners</h1>
+
+<h2>
+<h:outputFormat value="#{winMessages.announcement}">
+   <f:param value="#{winners.winner1}"/>
+   <f:param value="John"/>
+   <f:param value="#{winners.winner3}"/>
+</h:outputFormat>
+</h2>
+</h:body></html>
