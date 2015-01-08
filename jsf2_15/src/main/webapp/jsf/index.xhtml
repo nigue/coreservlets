@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head><title>JSF 2: Ajax Support</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+        <h:outputScript library="js" name="utils.js" />
+    </h:head>
+    <h:body>
+        <div align="center">
+            <h1 class="title">JSF 2: Ajax Support</h1>
+            <br/>
+
+            <h:form>
+                <fieldset>
+                    <legend>Random Number: No Ajax</legend>
+                    <h:commandButton value="Show Number" 
+                                     action="#{numberGenerator.randomize}"/>
+                    <h2><h:outputText value="#{numberGenerator.number}"
+                                      id="numField1"/></h2>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>Random Number: Ajax</legend>
+                    <h:commandButton value="Show Number" 
+                                     action="#{numberGenerator.randomize}">
+                        <f:ajax render="numField1"/> <!-- Putting this inside h:commandButton is only difference from previous example! -->
+                    </h:commandButton>
+                    <h2><h:outputText value="#{numberGenerator.number}"
+                                      id="numField1"/></h2>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>Random Number: Ajax (Version 2 with action="nothing")</legend>
+                    <h:commandButton value="Show Number" 
+                                     action="nothing">
+                        <f:ajax render="numField2"/> 
+                    </h:commandButton>
+                    <h2><h:outputText value="#{numberGenerator.number2}"
+                                      id="numField2"/></h2>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>Random Number (with execute="someId")</legend>
+                    Range:
+                    <h:inputText value="#{numberGenerator.range}"
+                                 id="rangeField"/><br/>
+                    <h:commandButton value="Show Number" 
+                                     action="#{numberGenerator.randomize}">
+                        <f:ajax execute="rangeField"
+                                render="numField3"/>
+                    </h:commandButton><br/>
+                    <h2><h:outputText value="#{numberGenerator.number}"
+                                      id="numField3"/></h2>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>Bank Customer Lookup (with execute="@form")</legend>
+                    For this simple test, legal id's are id001, id002, and id003. 
+                    The password is "secret".<br/><br/>
+                    Customer ID: 
+                    <h:inputText value="#{bankingBeanAjax.customerId}"/><br/>
+                    Password: 
+                    <h:inputSecret value="#{bankingBeanAjax.password}"/><br/>
+                    <h:commandButton value="Show Current Balance" 
+                                     action="#{bankingBeanAjax.showBalance}">
+                        <f:ajax execute="@form"   
+                                render="ajaxMessage1"/>
+                    </h:commandButton>
+                    <br/>
+                    <h2><h:outputText value="#{bankingBeanAjax.message}"
+                                      id="ajaxMessage1"/></h2>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>Population Lookup (with chained comboboxes)</legend>
+                    State:
+                    <h:selectOneMenu value="#{locationBean.state}">
+                        <f:selectItem itemLabel="--Choose State--"/>
+                        <f:selectItems value="#{locationBean.states}"/>
+                        <f:ajax render="cityList population"/>
+                    </h:selectOneMenu>
+                    <br/>City:
+                    <h:selectOneMenu value="#{locationBean.city}"
+                                     disabled="#{locationBean.cityListDisabled}"
+                                     id="cityList">
+                        <f:selectItem itemLabel="--Choose City--"/>
+                        <f:selectItems value="#{locationBean.cities}"/>
+                        <f:ajax render="population"/>
+                    </h:selectOneMenu>
+                    <br/><b>Population:
+                        <h:outputText value="#{locationBean.city}" 
+                                      id="population"/></b><br/><br/><br/><br/><br/>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>On-the-Fly Temperature Converter (with event="keyup")</legend>
+                    Temperature in Fahrenheit:
+                    <h:inputText value="#{temperatureConverter.fTemp}">
+                        <f:ajax event="keyup"
+                                render="cField kField"/>
+                    </h:inputText><br/>
+                    <h2>
+                        Temperature in Celsius: 
+                        <h:outputText value="#{temperatureConverter.cTemp}"
+                                      id="cField"/><br/>
+                        Temperature in Kelvin: 
+                        <h:outputText value="#{temperatureConverter.kTemp}"
+                                      id="kField"/><br/>
+                    </h2>
+                </fieldset>
+            </h:form>
+            <br/>
+            <h:form>
+                <fieldset>
+                    <legend>Bank Customer Lookup (with onevent)</legend>
+                    Customer ID: 
+                    <h:inputText value="#{bankingBeanSlow.customerId}"/><br/>
+                    Password: 
+                    <h:inputSecret value="#{bankingBeanSlow.password}"/><br/>
+                    <h:commandButton value="Show Current Balance" 
+                                     action="#{bankingBeanSlow.showBalance}">
+                        <f:ajax execute="@form"   
+                                render="ajaxMessage2"
+                                onevent="showWorkingIndicator"/>
+                    </h:commandButton>
+                    <br/>
+                    <h2>
+                        <span id="workingIndicator" 
+                              style="display: none; font-size: 60%">
+                            <h:graphicImage library="images" name="ajax-loader.gif" />
+                            Loading data from server...
+                        </span>
+                        <h:outputText value="#{bankingBeanSlow.message}"
+                                      id="ajaxMessage2"/></h2>
+                </fieldset>
+            </h:form>
+
+
+
+            <ui:include src="/snippets/training-course-ad.xhtml"/>
+        </div></h:body></html>

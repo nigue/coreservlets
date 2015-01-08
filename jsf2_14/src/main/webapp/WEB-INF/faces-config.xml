@@ -1,0 +1,46 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    <application>
+        <resource-bundle>
+            <base-name>messages</base-name>
+            <var>msgs</var>
+        </resource-bundle>
+    </application>
+  
+    <navigation-rule>
+        <from-view-id>jsf/navigation/register1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>missing-input</from-outcome>
+            <to-view-id>jsf/pages/person/missing-input.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>confirm-registration</from-outcome>
+            <to-view-id>jsf/pages/person/confirm-registration.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/register2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>missing-input</from-outcome>
+            <to-view-id>jsf/pages/person/missing-input.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>confirm-registration</from-outcome>
+            <to-view-id>jsf/pages/person/confirm-registration.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/register3.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>missing-input</from-outcome>
+            <to-view-id>jsf/pages/person/missing-input.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>confirm-registration</from-outcome>
+            <to-view-id>jsf/pages/person/confirm-registration.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>
