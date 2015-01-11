@@ -1,0 +1,20 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head>
+<title>Report Summary</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">Report Summary</h1>
+<p>Here is the data you sent:</p>
+<ul>
+  <li>Name: #{errorReportBean1.name}</li>
+  <li>URL: #{errorReportBean1.url}</li>
+  <li>Email address: #{errorReportBean1.emailAddress}</li>
+  <li>Credit card number: <i>xxxx</i>-#{errorReportBean1.abbreviatedCardNumber}</li>
+  <li>Problem description: <i>#{errorReportBean1.problemDescription}</i></li>
+</ul>
+<p>A $10 thank you will be credited to your card upon confirmation of the issue.</p>
+</h:body></html>

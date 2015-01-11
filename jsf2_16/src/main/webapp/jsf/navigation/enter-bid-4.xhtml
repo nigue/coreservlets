@@ -1,0 +1,63 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Enter Bid</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<div align="center">
+<h1 class="title">Enter Bid</h1>
+<br/>
+<fieldset>
+<legend>Parameters for Your Bid</legend>
+<h:form>
+<h:panelGrid columns="3" styleClass="formTable">
+  User ID: 
+  <h:inputText value="#{bidBean2.userId}" 
+               required="true"
+               requiredMessage="You must enter a user ID"
+               validatorMessage="ID must be 5 or 6 chars"
+               id="userId">
+    <f:validateLength minimum="5" maximum="6"/>
+  </h:inputText>
+  <h:message for="userId"/>
+  
+  Keywords: 
+  <h:inputText value="#{bidBean2.keyword}" 
+               required="true" 
+               requiredMessage="You must enter a keyword"
+               validatorMessage="Keyword must be at least 3 chars"
+               id="keyword">
+    <f:validateLength minimum="3"/>
+  </h:inputText>
+  <h:message for="keyword"/>
+  
+  Bid Amount: $ 
+  <h:inputText value="#{bidBean2.bidAmount}"
+               required="true"
+               requiredMessage="You must enter an amount"
+               converterMessage="Amount must be a number"
+               validatorMessage="Amount must be 0.10 or greater"
+               id="amount">
+    <f:validateDoubleRange minimum="0.10"/>
+  </h:inputText>
+  <h:message for="amount"/>
+  
+  Duration: 
+  <h:inputText value="#{bidBean2.bidDuration}" 
+               required="true"
+               requiredMessage="You must enter a duration"
+               converterMessage="Duration must be a whole number"
+               validatorMessage="Duration must be 15 days or more"
+               id="duration">
+    <f:validateLongRange minimum="15"/>
+  </h:inputText>
+  <h:message for="duration"/>
+</h:panelGrid>
+  <h:commandButton value="Send Bid!" 
+                   action="#{bidBean2.doBid}"/>
+</h:form>
+</fieldset>
+</div></h:body></html>

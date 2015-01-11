@@ -1,0 +1,49 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
+    <navigation-rule>
+        <from-view-id>jsf/navigation/enter-bid-1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-bid-1</from-outcome>
+            <to-view-id>jsf/pages/show-bid-1.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/enter-bid-2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-bid-1</from-outcome>
+            <to-view-id>jsf/pages/show-bid-1.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/enter-bid-3.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-bid-2</from-outcome>
+            <to-view-id>jsf/pages/show-bid-2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/enter-bid-4.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-bid-2</from-outcome>
+            <to-view-id>jsf/pages/show-bid-2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/enter-bid-5.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-bid-2</from-outcome>
+            <to-view-id>jsf/pages/show-bid-2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/enter-bid-6.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-bid-2</from-outcome>
+            <to-view-id>jsf/pages/show-bid-2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

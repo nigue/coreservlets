@@ -1,0 +1,30 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+<h:head><title>JSF 2 Validation Part 1: Basics</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+</h:head>
+<h:body>
+<h1 class="title">JSF 2 Validation Part 1: Basics</h1>
+<br/>
+<ul>
+  <li><a href="jsf/navigation/enter-bid-1.jsf">enter-bid-1.jsf</a><br/>
+      Requiring that certain entries be present: the required and requiredMessage attributes. 
+      Error messages at the top.</li>
+  <li><a href="jsf/navigation/enter-bid-2.jsf">enter-bid-2.jsf</a><br/>
+      Putting error messages next to the offending field.</li>
+  <li><a href="jsf/navigation/enter-bid-3.jsf">enter-bid-3.jsf</a><br/>
+      Checking that values are of the right type: using non-String bean properties and converterMessage.</li>
+  <li><a href="jsf/navigation/enter-bid-4.jsf">enter-bid-4.jsf</a><br/>
+      Verifying that values are in the right range: using f:validate<i>Blah</i> tags and validatorMessage.</li>
+  <li><a href="jsf/navigation/enter-bid-5.jsf">enter-bid-5.jsf</a><br/>
+      Putting a "Fix Errors Marked Below" at the top of long forms, whenever there is at least one error.</li>
+  <li><a href="jsf/navigation/enter-bid-6.jsf">enter-bid-6.jsf</a><br/>
+      Moving "Fix Errors Marked Below" functionality into composite component.</li>
+</ul>
+
+
+            <ui:include src="/snippets/training-course-ad.xhtml"/>
+</h:body></html>
