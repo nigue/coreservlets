@@ -12,28 +12,28 @@
     </application>
     
     <navigation-rule>
-        <from-view-id>jsf/navigation/resort-registration-1</from-view-id>
+        <from-view-id>jsf/navigation/resort-registration-1.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>show-dates-1</from-outcome>
             <to-view-id>jsf/pages/show-dates-1.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
     <navigation-rule>
-        <from-view-id>jsf/navigation/resort-registration-2</from-view-id>
+        <from-view-id>jsf/navigation/resort-registration-2.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>show-dates-2</from-outcome>
             <to-view-id>jsf/pages/show-dates-2.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
         <navigation-rule>
-        <from-view-id>jsf/navigation/calculator</from-view-id>
+        <from-view-id>jsf/navigation/calculator.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>show-sum</from-outcome>
             <to-view-id>jsf/pages/show-sum.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
         <navigation-rule>
-        <from-view-id>jsf/navigation/bug-report-1</from-view-id>
+        <from-view-id>jsf/navigation/bug-report-1.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>report-confirmation</from-outcome>
             <to-view-id>jsf/pages/report-confirmation.xhtml</to-view-id>
