@@ -1,0 +1,35 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head><title>Building HTML in a Bean</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+        <style type="text/css">
+            .languages { font-style: italic; }
+        </style>
+    </h:head>
+    <h:body>
+        <h1 class="title">Building HTML in a Bean</h1>
+        <br/>
+        <p>Building HTML from a bean getter method is not always bad.
+            When you are building something in a standard format that does not
+            need to change very much, building the output in Java can be
+            simple and reusable.</p>
+
+        <h2>First coreservlets.com Developer</h2>
+        <ul>
+            <li>Level: #{person1.level}</li>
+            <li>First name: #{person1.firstName}</li>
+            <li>Last name: #{person1.lastName}</li>
+            <li>Languages: #{person1.languageList1}</li>
+        </ul>
+
+        <h2>Second coreservlets.com Developer</h2>
+        <p>
+            Our second #{person2.level}-level developer is 
+            #{person2.firstName} #{person2.lastName}. 
+            He is proficient in
+            <h:outputText value="#{person2.languageList2}"
+                          escape="false"/>.
+        </p>
+    </h:body></html>

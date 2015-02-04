@@ -1,0 +1,107 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head><title>Looping with ui:repeat</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+        <style type="text/css">
+            .evenLang { color: blue }
+            .oddLang { color: red }
+        </style>
+    </h:head>
+    <h:body>
+        <h1 class="title">Looping with ui:repeat</h1>
+        <br/>
+        <p>Sometimes using a bean or a composite component does not
+            give enough control to the Web page designer, so you need
+            to do explicit looping in the page.</p>
+
+        <fieldset>
+            <legend>Testing without Results Pages</legend>
+            <ul>
+                <ui:repeat var="color" value="#{test.colors}">
+                    <li>#{color}</li>
+                </ui:repeat>
+            </ul>
+        </fieldset>
+        <p></p>
+        <fieldset>
+            <legend>Simple Loops</legend>
+            <ul>
+                <li>Level: #{person1.level}</li>
+                <li>First name: #{person1.firstName}</li>
+                <li>Last name: #{person1.lastName}</li>
+                <li>Languages: 
+                    <ul>
+                        <ui:repeat var="language" value="#{person1.languages}">
+                            <li>#{language}</li>
+                        </ui:repeat>
+                    </ul>
+                </li>
+            </ul>
+        </fieldset>
+
+        <p></p>
+
+        <fieldset>
+            <legend>Nested Loops</legend>
+            <h1>Corporate Developer Capabilities</h1>
+
+            <ui:repeat var="programmer" value="#{company1.programmers}">
+                <h2>#{programmer.firstName} #{programmer.lastName} 
+                    (#{programmer.level}-level)
+                </h2>
+                <ul style="margin-top: -1em;">
+                    <ui:repeat var="language" value="#{programmer.languages}">
+                        <li>#{language}</li>
+                    </ui:repeat>
+                </ul>
+            </ui:repeat>
+        </fieldset>
+
+        <p></p>
+
+        <fieldset>
+            <legend>varStatus and first/last</legend>
+            <h1>Corporate Developer Capabilities</h1>
+
+            <ui:repeat var="programmer" value="#{company1.programmers}">
+                <h2>#{programmer.firstName} #{programmer.lastName} 
+                    (#{programmer.level}-level)
+                </h2>
+                <ui:repeat var="language" value="#{programmer.languages}"
+                           varStatus="status">
+                    <h:outputText value=" and " 
+                                  rendered="#{status.last}"/>
+                    #{language}<h:outputText value="," 
+                                  rendered="#{!status.last}"/>
+                </ui:repeat>
+            </ui:repeat>
+        </fieldset>
+
+        <p></p>
+
+        <fieldset>
+            <legend>varStatus and even/odd</legend>
+            <h1>Corporate Developer Capabilities</h1>
+
+            <ui:repeat var="programmer" value="#{company1.programmers}">
+                <h2>#{programmer.firstName} #{programmer.lastName} 
+                    (#{programmer.level}-level)
+                </h2>
+                <ul style="margin-top: -1em;">
+                    <ui:repeat var="language" value="#{programmer.languages}"
+                               varStatus="status">
+                        <ui:fragment rendered="#{status.even}">
+                            <li class="evenLang">#{language}</li>
+                        </ui:fragment>
+                        <ui:fragment rendered="#{!status.even}">
+                            <li class="oddLang">#{language}</li>
+                        </ui:fragment>
+                    </ui:repeat>
+                </ul>
+            </ui:repeat>
+        </fieldset>
+
+    </h:body></html>
