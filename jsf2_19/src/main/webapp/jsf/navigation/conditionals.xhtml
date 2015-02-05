@@ -1,0 +1,62 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head><title>h:dataTable: Conditional Output and Editable Table Cells</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+        <h:outputStylesheet library="css" name="table-styles.css"  />
+    </h:head>
+    <h:body>
+        <h1 class="title">h:dataTable: Conditional Output &amp; Editable Table Cells</h1>
+        <br/>
+        <p>You can use the "rendered" attribute to switch between output and input elements so
+            as to make cells editable.</p><p/>
+
+        <h:form>
+            <div align="center"><b>Company:</b>
+                <h:selectOneMenu value="#{companyInfo.companyName}">
+                    <f:selectItems value="#{companyInfo.companyChoices}"/>
+                    <f:ajax render="@form" execute="@form"/>
+                </h:selectOneMenu>
+            </div>
+            <p/>
+            <h:dataTable var="programmer" 
+                         value="#{companyInfo.company.programmers}"
+                         border="1"
+                         id="programmerTable"
+                         styleClass="mainTable"
+                         captionClass="caption1"
+                         headerClass="heading"
+                         rowClasses="even,odd">
+                <f:facet name="caption">Programmers at #{companyInfo.company.companyName}</f:facet>
+                <h:column>
+                    <f:facet name="header">First Name</f:facet>
+                        #{programmer.firstName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Last Name</f:facet>
+                        #{programmer.lastName}
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Experience Level</f:facet>
+                    (<i>Edit?
+                        <h:selectBooleanCheckbox value="#{programmer.levelEditable}">
+                            <f:ajax render="@form"/>
+                        </h:selectBooleanCheckbox></i>)
+                    <h:inputText value="#{programmer.level}" size="12"
+                                 rendered="#{programmer.levelEditable}"/>
+                    <h:commandButton value="Update" rendered="#{programmer.levelEditable}">
+                        <f:ajax render="@form" execute="@form"/>
+                    </h:commandButton>
+                    <h:outputText value="#{programmer.level}" 
+                                  rendered="#{!programmer.levelEditable}"/>
+                </h:column>
+                <h:column>
+                    <f:facet name="header">Languages</f:facet>
+                        #{programmer.languageList}
+                </h:column>
+            </h:dataTable>
+        </h:form>
+    </h:body></html>

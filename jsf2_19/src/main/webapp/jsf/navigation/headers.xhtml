@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head><title>h:dataTable: Headers and Footers</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+    </h:head>
+    <h:body>
+        <h1 class="title">h:dataTable: Headers and Footers</h1>
+        <br/>
+        <p>You can use f:facet to define captions, headers, and footers that are
+            not repeated for every row.</p>
+
+        <h:dataTable var="programmer" 
+                     value="#{company1.programmers}"
+                     border="1">
+            <f:facet name="caption">Programmers at #{company1.companyName}</f:facet>
+            <h:column>
+                <f:facet name="header">First Name</f:facet>
+                    #{programmer.firstName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Last Name</f:facet>
+                    #{programmer.lastName}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Experience Level</f:facet>
+                    #{programmer.level}
+            </h:column>
+            <h:column>
+                <f:facet name="header">Languages</f:facet>
+                    #{programmer.languageList}
+            </h:column>
+        </h:dataTable>
+    </h:body></html>
