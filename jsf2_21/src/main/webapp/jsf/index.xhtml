@@ -1,0 +1,69 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+      xmlns:utils="http://xmlns.jcp.org/jsf/composite/utils">
+    <h:head><title>Composite Components</title>
+        <!-- Using h:outputStylesheet instead of regular link since also used in "relative-urls.xhtml". See notes for details. -->
+        <h:outputStylesheet name="styles.css" library="css"/>
+    </h:head>
+    <h:body>
+        <h1 class="title">Composite Components</h1>
+        <br/>
+        <fieldset>
+            <legend>Super-Quick Example without Attributes (myComponent)</legend>
+            <utils:myComponent/>
+        </fieldset>
+        <br/><br/><br/>
+        <fieldset>
+            <legend>Basic Composite Components</legend>
+            <utils:info1/>
+        </fieldset>
+        <br/><br/><br/>
+        <fieldset>
+            <legend>Super-Quick Example with Attributes (showMessages)</legend>
+            <utils:showMessages msg1="Hello, world"/>
+        </fieldset>
+        <br/><br/><br/>
+        <fieldset>
+            <legend>Composite Components with Attributes</legend>
+            <utils:info2 styleClass="blue"/>
+        </fieldset>
+        <br/><br/><br/>
+        <fieldset>
+            <legend>Composite Components that Use ui:repeat</legend>
+            <h2>First coreservlets.com Developer</h2>
+            <ul>
+                <li>Level: #{person1.level}</li>
+                <li>First name: #{person1.firstName}</li>
+                <li>Last name: #{person1.lastName}</li>
+                <li>Languages: <utils:list value="#{person1.languages}"
+                                           styleClass="blue"/></li>
+            </ul>
+            <hr/>
+            <h2>Second coreservlets.com Developer</h2>
+            <p>
+                Our second developer (#{person2.level}-level) is 
+                #{person2.firstName} #{person2.lastName}. 
+                He is proficient in:</p>
+            <utils:list value="#{person2.languages}"/>
+        </fieldset>
+        <br/><br/><br/>
+        <fieldset>
+            <legend>Dealing with Relative URLs</legend>
+            <ul>
+                <li><a href="#{request.contextPath}/jsf/relative-urls.jsf">relative-urls.jsf (top-level directory)</a></li>
+                <li><a href="#{request.contextPath}/jsf/some-directory/relative-urls.jsf">relative-urls.jsf (subdirectory)</a></li>
+            </ul>
+        </fieldset>
+        <br/><br/><br/>
+        <fieldset>
+            <legend>Nested Composite Components</legend>
+            <utils:programmerInfo programmer="#{person1}"
+                                  styleClass="blue"/>
+        </fieldset>
+
+
+        <ui:include src="/snippets/training-course-ad.xhtml"/>
+    </h:body></html>
