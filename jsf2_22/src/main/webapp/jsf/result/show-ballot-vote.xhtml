@@ -1,0 +1,26 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Vote Confirmation</title>
+<h:outputStylesheet name="styles.css" library="css"/>
+</h:head>
+<h:body>
+<h1 class="title">Vote Confirmation</h1>
+<br/>
+<fieldset>
+<legend>Maryland Write-in Ballot</legend>
+<ul>
+  <li>President: 
+      #{marylandBallot.president.fullName}</li>
+  <li>Vice President: 
+      #{marylandBallot.vicePresident.fullName}</li>
+  <li>Voted for Proposition 1
+      (#{marylandBallot.prop1Description}):
+      #{marylandBallot.forProp1}</li>
+  <li>Voted for Proposition 2
+      (#{marylandBallot.prop2Description}):
+      #{marylandBallot.forProp2}</li>
+</ul>
+</fieldset>
+</h:body></html>

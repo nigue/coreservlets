@@ -1,0 +1,29 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>jsf/navigation/inputName1Page.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-ballot-vote</from-outcome>
+            <to-view-id>jsf/result/show-ballot-vote.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>show-employee-vote</from-outcome>
+            <to-view-id>jsf/result/show-employee-vote.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/inputName2Page.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-ballot-vote</from-outcome>
+            <to-view-id>jsf/result/show-ballot-vote.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>show-employee-vote</from-outcome>
+            <to-view-id>jsf/result/show-employee-vote.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+</faces-config>

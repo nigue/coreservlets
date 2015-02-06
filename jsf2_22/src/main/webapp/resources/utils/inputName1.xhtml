@@ -1,0 +1,38 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite">
+
+<cc:interface>
+  <cc:attribute name="value" required="true" 
+                type="coreservlets.data.Nameable"/>
+  <cc:attribute name="firstNamePrompt" required="false"
+                default="First Name"/>
+  <cc:attribute name="lastNamePrompt" required="false"
+                default="Last Name"/>
+  <cc:attribute name="required" required="false"
+                default="true"/>
+  <cc:attribute name="requiredMessage" required="false"
+                default="Required!"/>
+</cc:interface>
+
+<cc:implementation>
+<h:panelGrid columns="3">
+#{cc.attrs.firstNamePrompt}:
+<h:inputText value="#{cc.attrs.value.firstName}" 
+             id="firstName"
+             required="#{cc.attrs.required}" 
+             requiredMessage="#{cc.attrs.requiredMessage}"/>
+<h:message for="firstName" style="font-weight: bold; color: red"/>
+
+#{cc.attrs.lastNamePrompt}:
+<h:inputText value="#{cc.attrs.value.lastName}" 
+             id="lastName"
+             required="#{cc.attrs.required}" 
+             requiredMessage="#{cc.attrs.requiredMessage}"/>
+<h:message for="lastName" style="font-weight: bold; color: red"/>
+</h:panelGrid>
+</cc:implementation>
+
+</html>

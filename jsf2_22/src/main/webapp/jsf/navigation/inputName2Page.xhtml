@@ -1,0 +1,58 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:utils="http://java.sun.com/jsf/composite/utils">
+<h:head><title>Composite Components</title>
+<h:outputStylesheet name="styles.css" library="css"/>
+</h:head>
+<h:body>
+<h1 class="title">Composite Components</h1>
+<br/>
+<fieldset>
+<legend>Employee of the Month</legend>
+<h2>Nominate this Month's Top Employee!</h2>
+<h:form>
+  <utils:inputName2 value="#{employeeOfMonth}"/>
+  Reason: 
+  <h:inputText value="#{employeeOfMonth.nominationReason}" 
+               size="75"/><br/>
+  <h:commandButton action="#{employeeOfMonth.recordVote}" 
+                   value="Record Vote"/>
+</h:form>
+</fieldset>
+<p/>
+<fieldset>
+<legend>Write-in Ballot</legend>
+<h:form>
+  <b>President</b><br/>
+  <utils:inputName2 value="#{marylandBallot.president}"
+                    firstNamePrompt="First (Given) Name"
+                    lastNamePrompt="Last (Family) Name"
+                    errorStyleClass="blue-error"/><br/>
+  <b>Vice President:</b><br/>
+  <utils:inputName2 value="#{marylandBallot.vicePresident}"
+                    firstNamePrompt="First (Given) Name"
+                    lastNamePrompt="Last (Family) Name"
+                    errorStyleClass="blue-error"/><br/>
+  <b>#{marylandBallot.prop1Description}</b>
+  <h:selectOneRadio value="#{marylandBallot.forProp1}">
+    <f:selectItem itemValue="true" itemLabel="For"/>
+    <f:selectItem itemValue="false" itemLabel="Against"/>
+  </h:selectOneRadio>
+  <b>#{marylandBallot.prop2Description}</b>
+  <h:selectOneRadio value="#{marylandBallot.forProp2}">
+    <f:selectItem itemValue="true" itemLabel="For"/>
+    <f:selectItem itemValue="false" itemLabel="Against"/>
+  </h:selectOneRadio>
+  <br/>
+  <h:commandButton action="#{marylandBallot.checkBallot}" 
+                   value="Submit Vote"/>
+</h:form>
+</fieldset>
+
+
+
+
+</h:body></html>
