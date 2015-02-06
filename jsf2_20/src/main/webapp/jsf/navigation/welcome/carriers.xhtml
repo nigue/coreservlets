@@ -1,0 +1,38 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/resources/templates/eboats-template.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:define name="title">
+  Eboats Aircraft Carriers!
+</ui:define>
+
+<ui:define name="menu">
+  <ui:include src="/snippets/google-search-box.xhtml"/>
+</ui:define>
+
+<ui:define name="body">
+        <h:graphicImage library="images" name="carrier.jpg" />
+<p/>
+High-security models for the <s>paranoid</s> careful buyer.
+<h2>Available Models</h2>
+Choose a model to see a picture along with price and
+availability information.
+<form action="displayItem">
+  <input type="radio" name="itemNum" value="safet-1a"/>
+  SafeT-1A -- Our most popular model<br/>
+  <input type="radio" name="itemNum" value="safet-1b"/>
+  SafeT-1B -- 1000-man crew included<br/>
+  <input type="radio" name="itemNum" value="land-lubber-1"/>
+  LL I -- Land-based replica; no water to worry about!
+  <p/>
+  <div align="center">
+  <input type="submit" value="Get Details"/>
+  </div>
+</form>
+</ui:define>
+
+<ui:define name="footer">
+  <ui:include src="/snippets/footer-full.xhtml"/>
+</ui:define>
+</ui:composition>

@@ -1,0 +1,29 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:ui="http://xmlns.jcp.org/jsf/facelets">
+    <h:head>
+        <title>Some Random Page</title>
+        <h:outputStylesheet library="css" name="styles.css"  />
+    </h:head>
+    <h:body>
+        <h1 class="title">Some Random Page</h1>
+        <h2>This page reuses the included file in multiple places</h2>
+
+        <ui:include src="/snippets/piece-of-content.xhtml"/>
+        <hr/>
+        <ui:include src="/snippets/piece-of-content.xhtml"/>
+        <hr/>
+        <div style="float: right">
+            <ui:include src="/snippets/piece-of-content.xhtml"/>
+        </div>
+        <div style="float: left; margin-right: 10px">
+            <ui:include src="/snippets/piece-of-content.xhtml"/>
+        </div>
+        <p>Blah, blah, blah. Yadda, yadda, yadda.
+            Blah, blah, blah. Yadda, yadda, yadda.
+            Blah, blah, blah. Yadda, yadda, yadda.
+            Blah, blah, blah. Yadda, yadda, yadda.</p>
+
+    </h:body></html>

@@ -1,0 +1,39 @@
+<ui:composition xmlns="http://www.w3.org/1999/xhtml"
+    xmlns:ui="http://xmlns.jcp.org/jsf/facelets"
+    template="/resources/templates/eboats-template.xhtml"
+    xmlns:h="http://xmlns.jcp.org/jsf/html">
+
+<ui:define name="title">
+  Eboats Oil Tankers!
+</ui:define>
+
+<ui:define name="menu">
+  <ui:include src="/snippets/yahoo-search-box.xhtml"/>
+</ui:define>
+
+<ui:define name="body">
+        <h:graphicImage library="images" name="tanker.jpg" />
+<p/>
+Stable and roomy models for the <s>uninformed</s> 
+innovative buyer.
+<h2>Available Models</h2>
+Choose a model to see a picture along with price and
+availability information.
+<form action="displayItem">
+  <input type="radio" name="itemNum" value="valdez"/>
+  Valdez -- Slightly damaged model available at discount<br/>
+  <input type="radio" name="itemNum" value="big-bertha"/>
+  Big Bertha -- Includes 10 million gallon swimming pool<br/>
+  <input type="radio" name="itemNum" value="eco-disaster1"/>
+  ED I -- For those who don't mind political incorrectness
+  <p/>
+  <div align="center">
+  <input type="submit" value="Get Details"/>
+  </div>
+</form>
+</ui:define>
+
+<ui:define name="footer">
+  <ui:include src="/snippets/footer-full.xhtml"/>
+</ui:define>
+</ui:composition>
