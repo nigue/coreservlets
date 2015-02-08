@@ -1,0 +1,37 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+
+<cc:interface componentType="coreservlets.components.DateComponent2">
+  <cc:attribute name="value" type="java.util.Date"/>
+  <cc:attribute name="startYear" type="java.lang.Integer" default="2014"/>
+  <cc:attribute name="endYear" type="java.lang.Integer" default="2040"/>
+</cc:interface>
+ 
+  <!-- 
+    Three ways to call setter methods:
+    1) Use c:set from JSTL (simple and works in all JSF implementations)
+    2) Define a JSTL function (complex, but works in all JSF implementations)
+    3) Call directly from expression language (simplest of all, but works only in Java EE 6)
+   -->
+<cc:implementation>
+  <c:set target="#{cc}" property="startYear" 
+         value="#{cc.attrs.startYear}"/>
+  <c:set target="#{cc}" property="endYear" 
+         value="#{cc.attrs.endYear}"/>
+  <h:selectOneMenu id="day" converter="javax.faces.Integer">
+    <f:selectItems value="#{cc.days}"/>
+  </h:selectOneMenu>
+  <h:selectOneMenu id="month" converter="javax.faces.Integer">
+    <f:selectItems value="#{cc.months}"/>
+  </h:selectOneMenu>
+  <h:selectOneMenu id="year" converter="javax.faces.Integer">
+    <f:selectItems value="#{cc.years}"/>
+  </h:selectOneMenu>
+</cc:implementation>
+
+</html>

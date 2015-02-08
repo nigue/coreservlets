@@ -1,0 +1,10 @@
+.formTable {
+  display: table;
+}
+.formTable td:first-child {
+  text-align: right;
+}
+.name-error {
+  font-weight: bold; 
+  color: red;
+}
