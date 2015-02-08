@@ -1,0 +1,25 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+  
+<cc:interface>
+  <cc:attribute name="value" type="java.util.Date"/>
+</cc:interface>
+ 
+  <!-- The pattern for f:convertDateTime is given in java.text.SimpleDateFormat -->
+  
+<cc:implementation>
+  <h:outputStylesheet name="jquery-ui.css" library="css/jquery-ui"/>
+  <h:outputScript name="jquery.js" library="scripts" target="head"/>
+  <h:outputScript name="jquery-ui.js" library="scripts" target="head"/>
+  <h:outputScript name="jquery-ui-setup.js" library="scripts" target="head"/>
+  <h:inputText styleClass="date" value="#{cc.attrs.value}">
+    <f:convertDateTime pattern="MM/dd/yyyy"/>
+  </h:inputText>
+</cc:implementation>
+
+</html>

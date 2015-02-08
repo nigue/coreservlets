@@ -1,0 +1,36 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:cc="http://xmlns.jcp.org/jsf/composite"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:c="http://xmlns.jcp.org/jsp/jstl/core">
+  
+<cc:interface>
+  <cc:attribute name="value" type="java.util.Date"/>
+  <cc:attribute name="changeMonth" default="false"/>
+  <cc:attribute name="changeYear" default="false"/>
+  <cc:attribute name="numberOfMonths" default="1"/>
+</cc:interface>
+ 
+  <!-- The pattern for f:convertDateTime is given in java.text.SimpleDateFormat -->
+  
+<cc:implementation>
+  <h:outputStylesheet name="jquery-ui.css" library="css/jquery-ui"/>
+  <h:outputScript name="jquery.js" library="scripts" target="head"/>
+  <h:outputScript name="jquery-ui.js" library="scripts" target="head"/>
+  <h:outputScript name="jquery-ui-setup.js" library="scripts" target="head"/>
+  <h:inputText value="#{cc.attrs.value}" id="date">
+    <f:convertDateTime pattern="MM/dd/yyyy"/>
+  </h:inputText>
+  <script type="text/javascript">
+   $(function() {
+      var fieldId = coreservlets.jQueryIdString("#{cc.clientId}" + ":date");
+      $(fieldId).datepicker({ changeMonth: #{cc.attrs.changeMonth},
+                              changeYear: #{cc.attrs.changeYear},
+                              numberOfMonths: #{cc.attrs.numberOfMonths}});
+   });
+  </script>
+</cc:implementation>
+
+</html>
