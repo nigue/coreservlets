@@ -1,0 +1,28 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<f:metadata>
+  <f:viewParam name="fg" value="#{colorPreferences.foreground}"/>
+  <f:viewParam name="bg" value="#{colorPreferences.background}"/>
+  <f:viewParam name="first" value="#{bankForm3.customer.firstName}"/>
+  <f:viewParam name="last" value="#{bankForm3.customer.lastName}"/>
+  <f:viewParam name="id" value="#{bankForm3.customer.id}"/>
+  <f:viewParam name="balance" value="#{bankForm3.customer.balance}"/>
+</f:metadata>
+<h:head><title>Customer's Balance</title>
+<h:outputStylesheet name="styles.css" library="css"/>
+</h:head>
+<h:body style="#{colorPreferences.style}">
+<table border="5" align="center">
+  <tr><th class="title">Customer's Balance</th></tr>
+</table>
+<p/>
+<ul>
+  <li>First name: #{bankForm3.customer.firstName}</li>
+  <li>Last name: #{bankForm3.customer.lastName}</li>  
+  <li>ID: #{bankForm3.customer.id}</li>
+  <li>Balance: $#{bankForm3.customer.balanceNoSign}</li>
+</ul>  
+</h:body></html>

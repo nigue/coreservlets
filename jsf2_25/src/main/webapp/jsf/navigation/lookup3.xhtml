@@ -1,0 +1,43 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <f:metadata>
+        <f:viewParam name="fg" value="#{colorPreferences.foreground}"/>
+        <f:viewParam name="bg" value="#{colorPreferences.background}"/>
+    </f:metadata>
+    <h:head>
+        <title>Bank Customer Lookup</title>
+        <h:outputStylesheet name="styles.css" library="css"/>
+    </h:head>
+    <h:body style="#{colorPreferences.style}">
+        <table border="5" align="center">
+            <tr><th class="title">Customer Lookup (Admin Interface)</th></tr>
+        </table>
+        <p/>
+        <fieldset>
+            <legend>Balance Lookup</legend>
+            <h:form prependId="false">
+                <label>
+                    Customer ID: 
+                    <h:inputText value="#{bankForm3.customerId}"
+                                 required="true"
+                                 requiredMessage="Missing customer ID"
+                                 id="customerId"/>
+                    <h:message for="customerId" styleClass="error"/>
+                </label><br/>
+                <label>
+                    Preferred foreground color: 
+                    <h:inputText value="#{colorPreferences.foreground}"/>
+                </label><br/>
+                <label>
+                    Preferred background color: 
+                    <h:inputText value="#{colorPreferences.background}"/>
+                </label><br/>
+                <h:commandButton value="Show Balance"
+                                 action="#{bankForm3.findBalance}"/>
+            </h:form>
+        </fieldset>
+    </h:body>
+</html>

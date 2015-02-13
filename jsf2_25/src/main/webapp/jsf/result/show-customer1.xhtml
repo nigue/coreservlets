@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<h:head><title>Your Balance</title>
+<h:outputStylesheet name="styles.css" library="css"/>
+</h:head>
+<h:body style="#{colorPreferences.style}">
+<table border="5" align="center">
+  <tr><th class="title">Your Balance</th></tr>
+</table>
+<p/>
+<ul>
+  <li>First name: #{bankForm1.customer.firstName}</li>
+  <li>Last name: #{bankForm1.customer.lastName}</li>  
+  <li>ID: #{bankForm1.customer.id}</li>
+  <li>Balance: $#{bankForm1.customer.balanceNoSign}</li>
+</ul>  
+</h:body></html>

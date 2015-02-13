@@ -1,0 +1,23 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+<f:metadata>
+  <f:viewParam name="id" value="#{bankForm4.customerId}"/>
+</f:metadata>
+<h:head><title>Customer's Balance</title>
+<h:outputStylesheet name="styles.css" library="css"/>
+</h:head>
+<h:body style="#{colorPreferences.style}">
+<table border="5" align="center">
+  <tr><th class="title">Customer's Balance</th></tr>
+</table>
+<p/>
+<ul>
+  <li>First name: #{bankForm4.customer.firstName}</li>
+  <li>Last name: #{bankForm4.customer.lastName}</li>  
+  <li>ID: #{bankForm4.customer.id}</li>
+  <li>Balance: $#{bankForm4.customer.balanceNoSign}</li>
+</ul>  
+</h:body></html>

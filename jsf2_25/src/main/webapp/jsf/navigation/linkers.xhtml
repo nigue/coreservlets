@@ -1,0 +1,74 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+    "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Links to Balance Lookup Page</title>
+        <h:outputStylesheet name="styles.css" library="css"/>
+    </h:head>
+    <h:body style="#{colorPreferences.style}">
+        <table border="5" align="center">
+            <tr><th class="title">Links to Balance Lookup Page</th></tr>
+        </table>
+        <p/>
+        <table align="center">
+            <tr>
+                <td>
+                    <fieldset>
+                        <legend>Using h:link</legend>
+                        <ul>
+                            <li><h:link outcome="lookup2?fg=black&amp;bg=white"
+                                        value="Light"/>&nbsp;&nbsp;&nbsp;    
+                            </li>
+                            <li><h:link outcome="lookup2?fg=white&amp;bg=black"
+                                        value="Dark"/></li>
+                            <li><h:link outcome="lookup2?fg=dimgray&amp;bg=lightgray"
+                                        value="Medium"/></li>
+                            <li><h:link outcome="lookup2?fg=chocolate&amp;bg=papayawhip"
+                                        value="Foods"/></li>
+                            <li><h:link outcome="lookup2?fg=cornflowerblue&amp;bg=cornsilk"
+                                        value="Corny"/></li>
+                            <li><h:link outcome="lookup2?fg=#{colorUtils.randomForeground}&amp;bg=#{colorUtils.randomBackground}"
+                                        value="Random"/></li>
+                        </ul>
+                    </fieldset>
+                </td>
+                <td>
+                    <fieldset>
+                        <legend>Using h:button</legend>
+                        <ul>
+                            <li><h:button outcome="lookup2?fg=black&amp;bg=white"
+                                          value="Light"/>&nbsp;&nbsp;&nbsp;    
+                            </li>
+                            <li><h:button outcome="lookup2?fg=white&amp;bg=black"
+                                          value="Dark"/></li>
+                            <li><h:button outcome="lookup2?fg=dimgray&amp;bg=lightgray"
+                                          value="Medium"/></li>
+                            <li><h:button outcome="lookup2?fg=chocolate&amp;bg=papayawhip"
+                                          value="Foods"/></li>
+                            <li><h:button outcome="lookup2?fg=cornflowerblue&amp;bg=cornsilk"
+                                          value="Corny"/></li>
+                            <li><h:button outcome="lookup2?fg=#{colorUtils.randomForeground}&amp;bg=#{colorUtils.randomBackground}"
+                                          value="Random"/></li>
+                        </ul>
+                    </fieldset>
+                </td>
+            </tr>
+            <tr>
+                <th colspan="2">
+                    <fieldset>
+                        <legend>Using Non-JSF Form</legend>
+                        <form action="lookup2.jsf">
+                            Foreground color:
+                            <input type="text" name="fg"/><br/>
+                            Background color:
+                            <input type="text" name="bg"/><br/>
+                            <input type="submit" value="Go"/>
+                        </form>
+                    </fieldset>
+                </th>
+            </tr>
+        </table>
+    </h:body>
+</html>
