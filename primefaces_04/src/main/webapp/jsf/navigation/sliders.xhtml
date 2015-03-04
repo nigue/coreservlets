@@ -1,0 +1,64 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core"
+      xmlns:p="http://primefaces.org/ui">
+<h:head><title>p:slider</title> 
+</h:head>
+<h:body>
+
+<h1 class="ui-widget-header ui-corner-all" align="center">p:slider</h1>
+<br/>
+<p:fieldset legend="Basics">
+<h:form>
+<h:panelGrid>
+  <h:panelGroup>
+    &deg;F:
+    <p:inputText id="fInput1" value="#{fBean1.f}"/>
+  </h:panelGroup>
+  <p:slider minValue="32" maxValue="212" for="fInput1"/>
+  <h:panelGroup>
+    <p:commandButton value="Convert to C" ajax="false"/>
+    #{fBean1.f}&deg;F = #{fBean1.c}&deg;C<p/>
+  </h:panelGroup>
+</h:panelGrid>
+</h:form>
+</p:fieldset>
+<br/>
+<p:fieldset legend="Read-Only Display">
+<h:form>
+<h:panelGrid>
+  <h:panelGroup>
+    <h:inputHidden id="fInput2" value="#{fBean2.f}" />
+    <h:outputText id="fDisplay2" value="#{fBean2.f}"/>
+    &deg;F
+  </h:panelGroup>
+  <p:slider minValue="32" maxValue="212" for="fInput2" 
+            display="fDisplay2"/>   
+  <h:panelGroup>
+    <p:commandButton value="Convert to C" ajax="false" />
+    #{fBean2.f}&deg;F = #{fBean2.c}&deg;C<p/>
+  </h:panelGroup>
+</h:panelGrid>
+</h:form>
+</p:fieldset>
+<br/>
+<p:fieldset legend="Ajax Updates">
+<h:form>
+<h:panelGrid width="200">
+  <h:panelGroup>
+    <h:inputHidden id="fInput3" value="#{fBean3.f}" />
+    <h:outputText id="fDisplay3" value="#{fBean3.f}"/>
+    &deg;F
+  </h:panelGroup>
+  <p:slider minValue="32" maxValue="212" for="fInput3"  
+            display="fDisplay3">
+    <p:ajax process="fInput3" update="status"/>
+  </p:slider>
+  <h:outputText value="#{fBean3.status}" id="status" escape="false"/>
+</h:panelGrid>
+</h:form>
+</p:fieldset>
+
+</h:body></html>

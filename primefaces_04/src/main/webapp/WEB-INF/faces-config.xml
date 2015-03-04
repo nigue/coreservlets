@@ -1,0 +1,39 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+        
+    <navigation-rule>
+        <from-view-id>jsf/navigation/ratings.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-ratings</from-outcome>
+            <to-view-id>jsf/pages/show-ratings.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <managed-bean>
+        <managed-bean-name>fBean1</managed-bean-name>
+        <managed-bean-class>
+            coreservlets.FahrenheitBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>fBean2</managed-bean-name>
+        <managed-bean-class>
+            coreservlets.FahrenheitBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    <managed-bean>
+        <managed-bean-name>fBean3</managed-bean-name>
+        <managed-bean-class>
+            coreservlets.FahrenheitBean
+        </managed-bean-class>
+        <managed-bean-scope>request</managed-bean-scope>
+    </managed-bean>
+    
+
+</faces-config>
