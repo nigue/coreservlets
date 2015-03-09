@@ -10,11 +10,32 @@
             <to-view-id>jsf/pages/show-colors.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
-        <navigation-rule>
+    <navigation-rule>
         <from-view-id>jsf/navigation/inplace.xhtml</from-view-id>
         <navigation-case>
             <from-outcome>show-colors</from-outcome>
             <to-view-id>jsf/pages/show-colors.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/captcha.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-registration-1</from-outcome>
+            <to-view-id>jsf/pages/show-registration-1.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/password.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-registration-2</from-outcome>
+            <to-view-id>jsf/pages/show-registration-2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
         </navigation-case>
     </navigation-rule>
 </faces-config>
