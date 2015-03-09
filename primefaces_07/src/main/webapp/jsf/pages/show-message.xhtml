@@ -1,0 +1,19 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html"
+      xmlns:f="http://xmlns.jcp.org/jsf/core">
+<h:head><title>Message</title> 
+</h:head>
+<h:body>
+<h1 class="ui-widget-header ui-corner-all" align="center">Message</h1>
+
+<p>This is the message that was sent to customer support:</p>
+<hr/>
+<div style="font-size: 130%">
+<h:outputText value="#{messageBean.message}" escape="false"/>
+</div>
+<hr/>
+<p>Replies will be sent to #{messageBean.emailAddress}</p>
+
+</h:body></html>

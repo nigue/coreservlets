@@ -1,0 +1,57 @@
+<?xml version='1.0' encoding='UTF-8'?>
+<faces-config version="2.2"
+              xmlns="http://xmlns.jcp.org/xml/ns/javaee"
+              xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+              xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor1.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor3.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor4.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor5.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor6.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    <navigation-rule>
+        <from-view-id>jsf/navigation/editor7.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-message</from-outcome>
+            <to-view-id>jsf/pages/show-message.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+</faces-config>
