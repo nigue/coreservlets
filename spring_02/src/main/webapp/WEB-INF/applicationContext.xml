@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.1.xsd">
+  <!-- Instantiates a Shape by calling the empty constructor
+       and then calling setter methods. -->
+  <bean id="shape1" class="coreservlets.Rectangle">
+    <property name="length" value="10"/>
+    <property name="width" value="20"/>
+  </bean>
+  
+  <!-- Instantiates a Shape by calling a constructor
+       with a value of 10. Use index when there are multiple
+       constructor args with compatible types. Use index and 
+       type when there are multiple constructors with the  
+       same number of args. -->
+  <bean id="shape2" class="coreservlets.Circle">
+    <constructor-arg value="10"/>
+  </bean>
+  
+  <!-- Instantiates a Shape by calling a zero-argument
+       factory method. Note that the class here is not
+       the class of the bean, but the class that holds
+       the static method. -->
+  <bean id="shape3" class="coreservlets.ShapeMaker"
+        factory-method="randomShape1">
+  </bean>
+  
+  <!-- Instantiates a Shape by calling a factory method
+       that takes an argument. Note that "constructor-arg"
+       is misnamed; in the case of factory-method, it
+       refers to the argument passed to the static method. -->
+  <bean id="shape4" class="coreservlets.ShapeMaker"
+        factory-method="randomShape2">
+    <constructor-arg value="100"/>
+  </bean>
+  
+  <!-- Instantiates a ShapeList by calling a constructor
+       with the bean named shape1 as an argument.
+       You can also nest bean references inside constructor-arg
+       or property. -->
+  <bean id="shapeList1" class="coreservlets.ShapeList">
+    <constructor-arg ref="shape1"/>
+  </bean>
+  
+  <!-- Instantiates a ShapeList by calling a constructor
+       with a list of beans as an argument. -->
+  <bean id="shapeList2" class="coreservlets.ShapeList">
+    <constructor-arg>
+      <list>
+        <ref bean="shape2"/>
+        <bean class="coreservlets.RightTriangle">
+          <property name="sideA" value="5"/>
+          <property name="sideB" value="10"/>
+        </bean>
+        <bean class="coreservlets.Circle">
+          <constructor-arg value="25"/>
+        </bean>
+      </list>
+    </constructor-arg>
+  </bean>
+</beans>
