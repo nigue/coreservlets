@@ -3,8 +3,33 @@
               xmlns="http://xmlns.jcp.org/xml/ns/javaee"
               xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
               xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-facesconfig_2_2.xsd">
+    
     <!-- variable/property resolver registration -->
     <application>
         <el-resolver>org.springframework.web.jsf.el.SpringBeanFacesELResolver</el-resolver>
     </application>
+    
+    <navigation-rule>
+        <from-view-id>/jsf/welcome2.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>show-test-data</from-outcome>
+            <to-view-id>/jsf/pages/show-test-data2.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
+    
+    <navigation-rule>
+        <from-view-id>/jsf/welcome.xhtml</from-view-id>
+        <navigation-case>
+            <from-outcome>invalid-id</from-outcome>
+            <to-view-id>/jsf/navigation/invalid-id.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>missing-id</from-outcome>
+            <to-view-id>/jsf/navigation/missing-id.xhtml</to-view-id>
+        </navigation-case>
+        <navigation-case>
+            <from-outcome>show-balance</from-outcome>
+            <to-view-id>/jsf/navigation/show-customer.xhtml</to-view-id>
+        </navigation-case>
+    </navigation-rule>
 </faces-config>

@@ -1,0 +1,27 @@
+<?xml version='1.0' encoding='UTF-8' ?>
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml"
+      xmlns:h="http://xmlns.jcp.org/jsf/html">
+    <h:head>
+        <title>Spring Bank: Your Balance</title>
+        <h:outputStylesheet name="styles.css" library="css"/>
+    </h:head>
+    <h:body  style="background-color: ${formBean.colorPreferences.background}; 
+             text-decoration-color: ${formBean.colorPreferences.foreground}">
+
+        <table border="5" align="center">
+            <tr><th class="title">Spring Bank: Your Balance</th></tr>
+        </table>
+        <p/>
+        <ul>
+            <li>ID: <h:outputText value="#{formBean.customer.customerID}"/></li>
+            <li>First name: 
+                <h:outputText value="#{formBean.customer.firstName}"/></li>
+            <li>Last name: 
+                <h:outputText value="#{formBean.customer.lastName}"/></li>
+            <li>Balance: 
+                <h:outputText value="#{formBean.customer.formattedBalance}"/></li>
+        </ul>
+    </h:body>
+</html>
+
