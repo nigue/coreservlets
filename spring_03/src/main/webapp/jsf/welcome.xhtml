@@ -3,10 +3,51 @@
 <html xmlns="http://www.w3.org/1999/xhtml"
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <h:head>
-        <title>Facelet Title</title>
+        <title>Spring Bank: Balance Lookup</title>
+        <h:outputStylesheet name="styles.css" library="css"/>
     </h:head>
-    <h:body>
-        Hello from Facelets
+    <h:body  style="background-color: ${formBean.colorPreferences.background}; 
+             text-decoration-color: ${formBean.colorPreferences.foreground}">
+
+        <table border="5" align="center">
+            <tr><th class="title">Spring Bank</th></tr>
+        </table>
+        <p/>
+        <fieldset>
+            <legend>Balance Lookup
+                (<font color="red">*</font> = required)</legend>
+            <h:form>
+                <label>
+                    <font color="red">*</font> Customer ID: 
+                    <h:inputText value="#{formBean.inputID}"/>
+                </label><br/>
+                <label>
+                    <font color="red">*</font> Password: 
+                    <h:inputSecret value="#{formBean.password}"/>
+                </label><br/>
+                <label>
+                    Preferred foreground color: 
+                    <h:inputText value="#{formBean.colorPreferences.foreground}"/>
+                </label><br/>
+                <label>
+                    Preferred background color: 
+                    <h:inputText value="#{formBean.colorPreferences.background}"/>
+                </label><br/>
+                <h:commandButton action="#{formBean.getBalance}"/>
+            </h:form>
+        </fieldset>
+        <p/>
+
+        <br/><br/><br/><br/><br/>
+        <font size="-2">All code from the
+            <a href="http://courses.coreservlets.com/Course-Materials/">
+                J2EE tutorials (servlets, JSP, Struts, JSF, Ajax, GWT, Spring, Hibernate, JPA, 
+                &amp; Java 6 programming.</a>. There are also live instructor-led
+            <a href="http://courses.coreservlets.com/">training courses on
+                the same J2EE topics (servlets, JSP, Struts, JSF, Ajax, GWT, Spring, Hibernate, JPA, 
+                &amp; Java 6 programming)</a>.
+        </font>
+
     </h:body>
 </html>
 
