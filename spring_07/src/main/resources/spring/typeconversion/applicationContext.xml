@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean class="coreservlets.SimpleValues">
+    <property name="integer" value="100" />
+    <property name="color" value="Red" />
+    <property name="file" value="/etc/hosts" />
+    <property name="inputStream" value="classpath:/log4j.xml" />
+    <property name="number">
+      <value type="java.lang.Double">100</value>
+    </property>
+    <property name="properties">
+      <value>
+        name00=value00
+        name01=value01
+      </value>
+    </property>
+  </bean>
+  
+</beans>

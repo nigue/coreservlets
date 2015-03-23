@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+        
+    <bean name="0002" class="java.lang.Integer"
+        factory-method="valueOf">
+        <constructor-arg value="0002" />
+    </bean>
+    <bean name="0003" class="java.lang.Integer"
+          factory-method="valueOf">
+        <constructor-arg value="0003" />
+    </bean>
+    <bean name="0004" class="java.lang.Integer"
+          factory-method="valueOf">
+        <constructor-arg value="0004" />
+    </bean>
+    
+    <bean class="coreservlets.MappedValues">
+        <property name="map">
+            <map>
+                <entry key="0000" value="0000" />
+                <entry key="0001">
+                    <value>01</value>
+                </entry>
+                <entry key-ref="0002" value-ref="0002" />
+                <entry value-ref="0003">
+                    <key>
+                        <value>0003</value>
+                    </key>
+                </entry>
+                <entry>
+                    <key>
+                        <value>0004</value>
+                    </key>
+                    <value>0004</value>
+                </entry>
+            </map>
+        </property>
+    </bean>
+</beans>

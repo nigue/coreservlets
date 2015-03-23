@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="bookLibrary-00" class="coreservlets.JavaBookLibrary" />
+  
+  <bean id="bookLibrary-01" class="coreservlets.JavaBookLibrary" />
+  
+  <bean id="bookLibrary-02" class="coreservlets.JavaBookLibrary" />
+  
+  <bean id="beanNames" class="coreservlets.BeanNames"> 
+    <constructor-arg index="0">
+      <idref local="bookLibrary-00" />
+    </constructor-arg>
+    <constructor-arg index="1">
+      <list>
+        <idref bean="bookLibrary-01" />
+        <idref bean="bookLibrary-02" />
+      </list>
+    </constructor-arg>
+  </bean> 
+
+</beans>

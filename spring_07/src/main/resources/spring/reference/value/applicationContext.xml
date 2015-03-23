@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+  <bean id="values-00" class="coreservlets.Values">
+    <constructor-arg value="values-00" />
+  </bean>
+  
+  <bean id="values-01" class="coreservlets.Values">
+    <constructor-arg>
+      <value>values-01</value>
+    </constructor-arg>
+  </bean>
+
+  <bean id="values-02" class="coreservlets.Values">
+    <constructor-arg>
+      <list>
+        <value>values-02</value>
+      </list>
+    </constructor-arg>
+  </bean>
+
+  <bean id="values-03" class="coreservlets.Values">
+    <property name="value">
+      <value>values-03</value>
+    </property>
+  </bean>
+  
+</beans>

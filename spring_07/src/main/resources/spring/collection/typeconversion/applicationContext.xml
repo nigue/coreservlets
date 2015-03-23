@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+    <bean class="coreservlets.TypedListValues">
+        <property name="varargsIntegers">
+            <list>
+                <value>100</value>
+            </list>
+        </property>
+        <property name="arrayFiles">
+            <list>
+                <value>/etc/hosts</value>
+            </list>
+        </property>
+        <property name="listClasses">
+            <list>
+                <value>java.lang.String</value>
+            </list>
+        </property>
+    </bean>
+</beans>
