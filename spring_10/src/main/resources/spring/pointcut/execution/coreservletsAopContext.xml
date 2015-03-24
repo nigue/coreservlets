@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+  xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+  xmlns:aop="http://www.springframework.org/schema/aop"
+  xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+  <bean id="summarizingMethodAdvice"
+        class="coreservlets.SummarizingMethodAdvice" />
+
+  <aop:config>
+
+    <aop:pointcut id="refinedCustomerQueryPcd"
+      expression="execution(public coreservlets.Customer coreservlets.CustomerQuery.getCustomerByName(java.lang.String))" />         
+
+    <aop:pointcut id="anyMethodPcd"
+      expression="execution(* *(..))" /> 
+
+    <aop:pointcut id="otherCustomerQueryPcd01"
+      expression="execution(coreservlets.Customer coreservlets.CustomerQuery.getCustomerByName(java.lang.String))" />         
+
+    <aop:pointcut id="otherCustomerQueryPcd02"
+      expression="execution(* coreservlets.CustomerQuery.getCustomerByName(java.lang.String))" />         
+
+    <aop:pointcut id="otherCustomerQueryPcd03"
+      expression="execution(* coreservlets.*.getCustomerByName(java.lang.String))" />     
+      
+    <aop:pointcut id="otherCustomerQueryPcd04"
+      expression="execution(* getCustomerByName(java.lang.String))" />         
+
+    <aop:pointcut id="otherCustomerQueryPcd05"
+      expression="execution(* get*(java.lang.String))" />         
+
+    <aop:pointcut id="otherCustomerQueryPcd06"
+      expression="execution(* *(java.lang.String))" />         
+
+    <aop:pointcut id="otherCustomerQueryPcd07"
+      expression="execution(* *(*String*))" />     
+      
+    <aop:pointcut id="propertyGetters"
+      expression="execution(public * get*())" />     
+
+    <aop:pointcut id="propertySetters"
+      expression="execution(public void set*(*))" />     
+
+    <aop:advisor advice-ref="summarizingMethodAdvice"
+                 pointcut-ref="anyMethodPcd" />
+                 
+  </aop:config>
+</beans>
