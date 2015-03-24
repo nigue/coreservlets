@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:aop="http://www.springframework.org/schema/aop"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd
+    http://www.springframework.org/schema/aop
+    http://www.springframework.org/schema/aop/spring-aop-2.5.xsd">
+
+    <bean id="advisor-0"
+          class="coreservlets.advice.ordering.NamedAroundAdvice">
+        <property name="name" value="advisor-0" />
+    </bean>
+
+    <bean id="advisor-1"
+          class="coreservlets.advice.ordering.NamedAroundAdvice">
+        <property name="name" value="advisor-1" />
+    </bean>
+
+    <aop:config>
+
+        <aop:pointcut id="customerQueryPointcut"
+                      expression="execution(* coreservlets.CustomerQuery.*(..))" /> 
+ 
+        <aop:advisor advice-ref="advisor-1"
+                     order="1"
+                     pointcut-ref="customerQueryPointcut" />
+
+        <aop:advisor advice-ref="advisor-0"
+                     order="0"
+                     pointcut-ref="customerQueryPointcut" />
+
+    </aop:config>
+</beans>

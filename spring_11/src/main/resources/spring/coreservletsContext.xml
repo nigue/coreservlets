@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-2.5.xsd">
+
+    <bean id="customerQuery"
+        class="coreservlets.MockCustomerQuery">
+        <constructor-arg>
+            <list>
+                <bean class="coreservlets.Customer">
+                    <property name="id" value="jjoe" />
+                    <property name="name" value="Java Joe" />
+                </bean>
+                <bean class="coreservlets.Customer">
+                    <property name="id" value="jjohn" />
+                    <property name="name" value="Java John" />
+                </bean>
+                <bean class="coreservlets.Customer">
+                    <property name="id" value="jspring" />
+                    <property name="name" value="Java Spring" />
+                </bean>
+            </list>
+        </constructor-arg>
+    </bean>
+  
+</beans>
