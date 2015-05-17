@@ -2,7 +2,8 @@ package courses.hibernate.dao;
 
 public class JavaDBAccountDAOConstants {
 
-    public static final String URL = "jdbc:derby://localhost:1527/LECTURE1";
+//    public static final String URL = "jdbc:derby://localhost:1527/LECTURE1";
+    public static final String URL = "jdbc:derby:LECTURE1;create=true";
 
     public static String CREATE_ACCOUNT = "INSERT INTO ACCOUNT(ACCOUNT_TYPE, CREATION_DATE, BALANCE) VALUES(?,CURRENT_TIMESTAMP,?)";
 

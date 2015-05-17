@@ -50,7 +50,7 @@ public class JavaDBAccountServiceTest {
     /**
      * Test retrieval of account
      */
-    //@Test
+    @Test
     public void testGetAccount() {
         Account account = createAccount();
         System.out.println("var account = " + account);
@@ -72,7 +72,7 @@ public class JavaDBAccountServiceTest {
     /**
      * Test deletion of account
      */
-//    @Test
+    @Test
     public void testDeleteAccount() {
         Account account = createAccount();
         System.out.println("var account = " + account);
@@ -86,7 +86,7 @@ public class JavaDBAccountServiceTest {
         // --- -- --- --- ------- ----- -- ------ -- ----
         Account anotherCopy = accountService.getAccount(account.getAccountId());
 
-        System.out.println("var anotherCopy = " + anotherCopy);
+        System.out.println("var delete anotherCopy = " + anotherCopy);
 
         TestCase.assertNull(anotherCopy);
     }
@@ -95,7 +95,7 @@ public class JavaDBAccountServiceTest {
      * Test update of account type. Account Type is set to update=false in
      * Hibernate Mapping. Therefore, ensure that it does not get updated.
      */
-//    @Test
+    @Test
     public void testUpdateAccountType() {
         Account account = createAccount();
         System.out.println("var account = " + account);
@@ -105,7 +105,7 @@ public class JavaDBAccountServiceTest {
         accountService.updateAccount(account);
 
         Account anotherCopy = accountService.getAccount(account.getAccountId());
-        System.out.println("var anotherCopy = " + anotherCopy);
+        System.out.println("var update anotherCopy = " + anotherCopy);
 
 		// make sure the one we just pulled back from
         // the database DOES NOT HAVE the updated balance
@@ -121,7 +121,7 @@ public class JavaDBAccountServiceTest {
     /**
      * Test updating of account balance
      */
-//    @Test
+    @Test
     public void testUpdateAccountBalance() {
         Account account = createAccount();
         System.out.println("var account = " + account);
@@ -131,7 +131,7 @@ public class JavaDBAccountServiceTest {
         accountService.updateAccount(account);
 
         Account anotherCopy = accountService.getAccount(account.getAccountId());
-        System.out.println("var anotherCopy = " + anotherCopy);
+        System.out.println("var update balance anotherCopy = " + anotherCopy);
 
 		// make sure the one we just pulled back
         // from the database has the updated balance

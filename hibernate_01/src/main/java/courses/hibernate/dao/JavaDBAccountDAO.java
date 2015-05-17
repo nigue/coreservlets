@@ -14,8 +14,7 @@ import courses.hibernate.vo.Account;
 public class JavaDBAccountDAO extends AccountDAO {
 
     /**
-     * @return 
-     * @see courses.hibernate.dao.AccountDAO#createAccount()
+     * @return @see courses.hibernate.dao.AccountDAO#createAccount()
      */
     public Account createAccount(Account account) {
         Connection connection = null;
@@ -39,6 +38,7 @@ public class JavaDBAccountDAO extends AccountDAO {
             resultSet = getAccountIdStatement.executeQuery();
             resultSet.next();
             accountId = resultSet.getLong(1);
+            connection.commit();
 
         } catch (SQLException e) {
             e.printStackTrace();
@@ -57,8 +57,7 @@ public class JavaDBAccountDAO extends AccountDAO {
     }
 
     /**
-     * @return 
-     * @throws java.sql.SQLException
+     * @return @throws java.sql.SQLException
      * @see courses.hibernate.dao.AccountDAO#getConnection()
      */
     protected Connection getConnection() throws SQLException {
