@@ -1,0 +1,1 @@
+CONNECT 'jdbc:derby://localhost:1527/LECTURE3;create=true';

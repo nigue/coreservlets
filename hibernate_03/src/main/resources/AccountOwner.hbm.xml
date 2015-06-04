@@ -1,0 +1,21 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="courses.hibernate.vo.AccountOwner" table="ACCOUNT_OWNER">
+		<id name="accountOwnerId" column="ACCOUNT_OWNER_ID">
+			<generator class="native" />
+		</id>
+		<property name="lastName" column="LAST_NAME" type="string" />
+		<property name="firstName" column="FIRST_NAME" type="string" />
+		<property name="socialSecurityNumber" column="SOCIAL_SECURITY_NUMBER"
+			type="string" />
+		<property name="streetAddress" column="STREET_ADDRESS" type="string" />
+		<property name="city" column="CITY" type="string" />
+		<property name="state" column="STATE" type="string" />
+		<property name="zipCode" column="ZIP_CODE" type="string" />
+		<property name="homePhone" column="HOME_PHONE" type="string" />
+		<property name="cellPhone" column="CELL_PHONE" type="string" />
+	</class>
+</hibernate-mapping>
