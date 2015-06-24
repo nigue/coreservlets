@@ -15,78 +15,77 @@ import courses.hibernate.vo.EBiller;
  */
 public class EBillServiceTest extends ServiceTest {
 
-	/**
-	 * Test creating of ebill
-	 */
-//	@Test
-	public void testCreateEBill() {
+    /**
+     * Test creating of ebill
+     */
+//    @Test
+    public void testCreateEBill() {
 
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 
-		// create the eBill
-		// ------ --- -----
-		EBiller ebiller = createEBiller();
-		EBill ebill = buildEBill(ebiller);
-		TestCase.assertTrue(ebill.getEbillId() == 0);
+        // create the eBill
+        // ------ --- -----
+        EBiller ebiller = createEBiller();
+        EBill ebill = buildEBill(ebiller);
+        TestCase.assertTrue(ebill.getEbillId() == 0);
 
-		// save the eBill
-		// ---- --- -----
-		EBillService ebillService = new EBillService();
-		ebillService.saveOrUpdateEBill(ebill);
+        // save the eBill
+        // ---- --- -----
+        EBillService ebillService = new EBillService();
+        ebillService.saveOrUpdateEBill(ebill);
 
-		session.getTransaction().commit();
-		HibernateUtil.getSessionFactory().getCurrentSession().close();
+        session.getTransaction().commit();
+        HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		System.out.println("var ebill = " + ebill);
+        System.out.println("var ebill = " + ebill);
 
-		// check that IDs were set after the hbm session
-		// ----- ---- --- ---- --- ----- --- --- -------
-		TestCase.assertTrue(ebill.getEbillId() > 0);
+        // check that IDs were set after the hbm session
+        // ----- ---- --- ---- --- ----- --- --- -------
+        TestCase.assertTrue(ebill.getEbillId() > 0);
 
-		// cleanup
-		// -------
-		deleteEBill(ebill);
-		deleteEBiller(ebiller);
-		HibernateUtil.getSessionFactory().close();
-	}
+        // cleanup
+        // -------
+        deleteEBill(ebill);
+        deleteEBiller(ebiller);
+        HibernateUtil.getSessionFactory().close();
+    }
 
-	/**
-	 * Test payment of ebill by setting a new account transaction on ebill
-	 */
-//	@Test
-	public void testPayEBill() {
-		Session session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
+    /**
+     * Test payment of ebill by setting a new account transaction on ebill
+     */
+//    @Test
+    public void testPayEBill() {
+        Session session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 
-		EBill ebill = createEBill();
-		AccountTransaction accountTransaction = createAccountTransaction(ebill
-				.getBalance());
+        EBill ebill = createEBill();
+        AccountTransaction accountTransaction = createAccountTransaction(ebill.getBalance());
 
-		// Pay ebill by setting transaction on ebill
-		// --- ----- -- ------- ----------- -- -----
-		ebill.setAccountTransaction(accountTransaction);
-		EBillService ebillService = new EBillService();
-		ebillService.saveOrUpdateEBill(ebill);
+        // Pay ebill by setting transaction on ebill
+        // --- ----- -- ------- ----------- -- -----
+        ebill.setAccountTransaction(accountTransaction);
+        EBillService ebillService = new EBillService();
+        ebillService.saveOrUpdateEBill(ebill);
 
-		session.getTransaction().commit();
-		HibernateUtil.getSessionFactory().getCurrentSession().close();
+        session.getTransaction().commit();
+        HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Validate that transaction has been persisted on ebill
-		// -------- ---- ----------- --- ---- --------- -- -----
-		session = HibernateUtil.getSessionFactory().getCurrentSession();
-		session.beginTransaction();
+        // Validate that transaction has been persisted on ebill
+        // -------- ---- ----------- --- ---- --------- -- -----
+        session = HibernateUtil.getSessionFactory().getCurrentSession();
+        session.beginTransaction();
 
-		ebill = ebillService.getEBill(ebill.getEbillId());
-		TestCase.assertNotNull(ebill.getAccountTransaction());
+        ebill = ebillService.getEBill(ebill.getEbillId());
+        TestCase.assertNotNull(ebill.getAccountTransaction());
 
-		session.getTransaction().commit();
-		HibernateUtil.getSessionFactory().getCurrentSession().close();
+        session.getTransaction().commit();
+        HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
-		// -------
-		deleteEBill(ebill);
-		deleteAccountTransaction(accountTransaction);
-		HibernateUtil.getSessionFactory().close();
-	}
+        // cleanup
+        // -------
+        deleteEBill(ebill);
+        deleteAccountTransaction(accountTransaction);
+        HibernateUtil.getSessionFactory().close();
+    }
 }

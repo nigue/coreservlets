@@ -48,7 +48,7 @@ public class AccountServiceTest extends ServiceTest {
         deleteAccount(account);
     }
 
-    @Test
+//    @Test
     public void testGetAccount() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -79,7 +79,7 @@ public class AccountServiceTest extends ServiceTest {
         deleteAccount(account);
     }
 
-    @Test
+//    @Test
     public void testUpdateAccountBalance() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -117,7 +117,7 @@ public class AccountServiceTest extends ServiceTest {
      * Test update of account type. Account Type is set to update=false in
      * Hibernate Mapping. Therefore, ensure that it does not get updated.
      */
-    @Test
+//    @Test
     public void testUpdateAccountType() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -155,7 +155,7 @@ public class AccountServiceTest extends ServiceTest {
     /**
      * Test deletion of account
      */
-    @Test
+//    @Test
     public void testDeleteAccount() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
