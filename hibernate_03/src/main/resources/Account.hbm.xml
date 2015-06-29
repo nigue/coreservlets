@@ -3,21 +3,33 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="courses.hibernate.vo.Account" table="ACCOUNT">
-		<id name="accountId" column="ACCOUNT_ID">
-			<generator class="native" />
-		</id>
-		<property name="creationDate" column="CREATION_DATE" type="timestamp"
-			update="false" />
-		<property name="accountType" column="ACCOUNT_TYPE" type="string"
-			update="false" />
-		<property name="balance" column="BALANCE" type="double" />
-		<idbag name="ebillers" table="ACCOUNT_EBILLER">
-			<collection-id column="ACCOUNT_EBILLER_ID" type="long">
-				<generator class="native" />
-			</collection-id>
-			<key column="ACCOUNT_ID" />
-			<many-to-many column="EBILLER_ID" class="courses.hibernate.vo.EBiller" />
-		</idbag>
-	</class>
+    <class name="courses.hibernate.vo.Account" table="ACCOUNT">
+        <id name="accountId" column="ACCOUNT_ID">
+            <generator class="native" />
+        </id>
+        <property name="creationDate" column="CREATION_DATE" type="timestamp" update="false" />
+        <property name="accountType" column="ACCOUNT_TYPE" type="string" update="false" />
+        <property name="balance" column="BALANCE" type="double" />
+<!--        <idbag name="ebillers" table="ACCOUNT_EBILLER">
+            <collection-id column="ACCOUNT_EBILLER_ID" type="long">
+                <generator class="native" />
+            </collection-id>
+            <key column="ACCOUNT_ID" />
+            <many-to-many column="EBILLER_ID" class="courses.hibernate.vo.EBiller" />
+        </idbag>-->
+        <set name="ebillers" 
+             table="ACCOUNT_EBILLER"  
+             cascade="all" 
+             inverse="false"  
+             lazy="true" 
+             fetch="select">
+            <key>
+                <column name="ACCOUNT_ID"  />
+            </key>
+            <many-to-many entity-name="courses.hibernate.vo.EBiller" >
+                <column name="EBILLER_ID"
+                        not-null="true" />
+            </many-to-many>
+        </set>
+    </class>
 </hibernate-mapping>

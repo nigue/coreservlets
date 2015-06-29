@@ -240,6 +240,7 @@ public class EBill implements Comparable<EBill> {
 	}
 
 	/**
+     * @param ebillToCompare
 	 * @see java.util.Comparator#compare(Object)
 	 */
 	@Override

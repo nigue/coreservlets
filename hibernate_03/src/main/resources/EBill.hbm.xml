@@ -3,25 +3,21 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="courses.hibernate.vo.EBill" table="EBILL">
-		<id name="ebillId" column="EBILL_ID">
-			<generator class="native" />
-		</id>
-		<property name="minimumAmountDue" column="MINIMUM_AMOUNT_DUE"
-			type="double" />
-		<property name="dueDate" column="DUE_DATE" type="timestamp" />
-		<property name="balance" column="BALANCE" type="double" />
-		<property name="amountPaid" column="AMOUNT_PAID" type="double" />
-		<property name="datePaid" column="DATE_PAID" type="timestamp" />
-		<property name="receivedDate" column="RECEIVED_DATE" type="timestamp" />
-		<property name="ebillerEbillNumber" column="EBILLER_EBILL_NUMBER"
-			type="long" />
-		<!--  Access is set to field because setAccountTransaction method is
-		      used to pay ebill. Contains business logic that should not be
-		      executed when Hibernate loads object from data store.         -->
-		<many-to-one name="accountTransaction" class="courses.hibernate.vo.AccountTransaction" 
-			access="field" column="ACCOUNT_TRANSACTION_ID" unique="true"/>
-		<many-to-one name="ebiller" column="EBILLER_ID"
-			class="courses.hibernate.vo.EBiller" access="field" />
-	</class>
+    <class name="courses.hibernate.vo.EBill" table="EBILL">
+        <id name="ebillId" column="EBILL_ID">
+            <generator class="native" />
+        </id>
+        <property name="minimumAmountDue" column="MINIMUM_AMOUNT_DUE" type="double" />
+        <property name="dueDate" column="DUE_DATE" type="timestamp" />
+        <property name="balance" column="BALANCE" type="double" />
+        <property name="amountPaid" column="AMOUNT_PAID" type="double" />
+        <property name="datePaid" column="DATE_PAID" type="timestamp" />
+        <property name="receivedDate" column="RECEIVED_DATE" type="timestamp" />
+        <property name="ebillerEbillNumber" column="EBILLER_EBILL_NUMBER" type="long" />
+        <!--  Access is set to field because setAccountTransaction method is
+        used to pay ebill. Contains business logic that should not be
+        executed when Hibernate loads object from data store.         -->
+        <many-to-one name="accountTransaction" class="courses.hibernate.vo.AccountTransaction" access="field" column="ACCOUNT_TRANSACTION_ID" unique="true"/>
+        <many-to-one name="ebiller" column="EBILLER_ID" class="courses.hibernate.vo.EBiller" access="field" />
+    </class>
 </hibernate-mapping>

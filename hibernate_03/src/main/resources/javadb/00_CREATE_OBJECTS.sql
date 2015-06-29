@@ -1,3 +1,5 @@
+run '/home/anibal/Proyectos/coreservlets/hibernate_03/src/main/resources/javadb/00_DROP_OBJECTS.sql';
+
 run '/home/anibal/Proyectos/coreservlets/hibernate_03/src/main/resources/javadb/01_ACCOUNT_OWNER.sql';
 
 run '/home/anibal/Proyectos/coreservlets/hibernate_03/src/main/resources/javadb/02_EBILLER.sql';

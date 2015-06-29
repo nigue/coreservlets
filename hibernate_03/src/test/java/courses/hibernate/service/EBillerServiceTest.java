@@ -28,7 +28,7 @@ public class EBillerServiceTest extends ServiceTest {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
-		//Create EBillers and Accounts
+        //Create EBillers and Accounts
         //------ -------- --- --------
         EBiller ebiller1 = createEBiller();
         EBiller ebiller2 = createEBiller();
@@ -46,7 +46,7 @@ public class EBillerServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		//Load EBiller and ensure counts of accounts are correct
+        //Load EBiller and ensure counts of accounts are correct
         //---- ------- --- ------ ------ -- -------- --- -------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -57,7 +57,7 @@ public class EBillerServiceTest extends ServiceTest {
         TestCase.assertEquals(2, ebiller1.getAccounts().size());
         TestCase.assertEquals(1, ebiller2.getAccounts().size());
 
-		//Load Accounts and ensure counts of ebillers are correct
+        //Load Accounts and ensure counts of ebillers are correct
         //---- -------- --- ------ ------ -- -------- --- -------
         account1 = accountService.getAccount(account1.getAccountId());
         account2 = accountService.getAccount(account2.getAccountId());
@@ -72,10 +72,10 @@ public class EBillerServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
-        deleteAccount(account1);
         deleteAccount(account2);
+        deleteAccount(account1);
         deleteEBiller(ebiller1);
         deleteEBiller(ebiller2);
         HibernateUtil.getSessionFactory().close();
@@ -96,11 +96,11 @@ public class EBillerServiceTest extends ServiceTest {
         EBillService ebillService = new EBillService();
         List<EBill> ebills = new ArrayList<EBill>();
 
-		// Create an ebiller
+        // Create an ebiller
         // ------ -- -------
         EBiller ebiller = createEBiller();
 
-		// Create 10 ebills for ebiller. Because this is a set, need
+        // Create 10 ebills for ebiller. Because this is a set, need
         // some time between the ebills to set a different due date,
         // hence the sleep
         // ---------------------------------------------------------
@@ -123,7 +123,7 @@ public class EBillerServiceTest extends ServiceTest {
 
         EBillerService eBillerService = new EBillerService();
 
-		// Retrieve the persisted ebillers and ensure that all
+        // Retrieve the persisted ebillers and ensure that all
         // the mapped collections hold the 10 ebills that were
         // persisted above.
         // ---------------------------------------------------
@@ -144,7 +144,7 @@ public class EBillerServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         for (EBill ebill : ebills) {
             deleteEBill(ebill);

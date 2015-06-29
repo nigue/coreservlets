@@ -38,8 +38,8 @@ public abstract class ServiceTest {
 		session.beginTransaction();
 		EBillerService ebillerService = new EBillerService();
 		ebillerService.deleteEBiller(ebiller);
-		session.getTransaction().commit();
-		HibernateUtil.getSessionFactory().getCurrentSession().close();
+//		session.getTransaction().commit();
+//		HibernateUtil.getSessionFactory().getCurrentSession().close();
 	}
 
 	/**

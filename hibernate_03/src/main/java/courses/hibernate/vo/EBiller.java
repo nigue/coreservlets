@@ -17,7 +17,7 @@ public class EBiller {
 	private String name;
 	private String billingAddress;
 	private String phone;
-	private Collection<Account> accounts = new HashSet<Account>();
+	private Collection<Account> accounts = new HashSet();
 
 	// Collection of all ebill balances. Example for mapping collections
 	// without associations.

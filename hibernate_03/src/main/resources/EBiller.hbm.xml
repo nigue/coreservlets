@@ -3,53 +3,67 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://www.hibernate.org/dtd/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="courses.hibernate.vo.EBiller" table="EBILLER">
-		<id name="ebillerId" column="EBILLER_ID">
-			<generator class="native" />
-		</id>
-		<property name="name" column="NAME" type="string" />
-		<property name="billingAddress" column="BILLING_ADDRESS"
-			type="string" />
-		<property name="phone" column="PHONE" type="string" />
-		<bag name="accounts" table="ACCOUNT_EBILLER" inverse="true">
-			<key column="EBILLER_ID" />
-			<many-to-many column="ACCOUNT_ID" class="courses.hibernate.vo.Account" />
-		</bag>
-		<bag name="ebillBalances" table="EBILL">
-			<key column="EBILLER_ID" />
-			<element column="BALANCE" type="double" />
-		</bag>
-		<set name="ebillsSet" inverse="true">
-			<key column="EBILLER_ID" not-null="true" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</set>
-		<bag name="ebillsBag" inverse="true" order-by="DUE_DATE ASC">
-			<key column="EBILLER_ID" not-null="true" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</bag>
-		<list name="ebillsList" inverse="true">
-			<key column="EBILLER_ID" not-null="true" />
-			<list-index column="EBILLER_EBILL_NUMBER" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</list>
-		<array name="ebillsArray" inverse="true">
-			<key column="EBILLER_ID" />
-			<list-index column="EBILLER_EBILL_NUMBER" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</array>
-		<map name="ebillsMap" inverse="true">
-			<key column="EBILLER_ID" />
-			<map-key column="EBILL_ID" type="long" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</map>
-		<set name="ebillsSortedSet" inverse="true" sort="natural">
-			<key column="EBILLER_ID" not-null="true" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</set>
-		<map name="ebillsSortedMap" inverse="true" sort="natural">
-			<key column="EBILLER_ID" />
-			<map-key formula="EBILL_ID" type="long" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</map>
-	</class>
+    <class name="courses.hibernate.vo.EBiller" table="EBILLER">
+        <id name="ebillerId" column="EBILLER_ID">
+            <generator class="native" />
+        </id>
+        <property name="name" column="NAME" type="string" />
+        <property name="billingAddress" column="BILLING_ADDRESS" type="string" />
+        <property name="phone" column="PHONE" type="string" />
+        <!--        <bag name="accounts" table="ACCOUNT_EBILLER" inverse="true">
+            <key column="EBILLER_ID" />
+            <many-to-many column="ACCOUNT_ID" class="courses.hibernate.vo.Account" />
+        </bag>-->
+        <set name="accounts" 
+             table="ACCOUNT_EBILLER"  
+             cascade="all" 
+             inverse="true"  
+             lazy="true" 
+             fetch="select">
+            <key>
+                <column name="EBILLER_ID" 
+                        not-null="true" />
+            </key>
+            <many-to-many entity-name="courses.hibernate.vo.Account" >
+                <column name="ACCOUNT_ID"
+                        not-null="true" />
+            </many-to-many>
+        </set>
+        <bag name="ebillBalances" table="EBILL">
+            <key column="EBILLER_ID" />
+            <element column="BALANCE" type="double" />
+        </bag>
+        <set name="ebillsSet" inverse="true">
+            <key column="EBILLER_ID" not-null="true" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </set>
+        <bag name="ebillsBag" inverse="true" order-by="DUE_DATE ASC">
+            <key column="EBILLER_ID" not-null="true" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </bag>
+        <list name="ebillsList" inverse="true">
+            <key column="EBILLER_ID" not-null="true" />
+            <list-index column="EBILLER_EBILL_NUMBER" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </list>
+        <array name="ebillsArray" inverse="true">
+            <key column="EBILLER_ID" />
+            <list-index column="EBILLER_EBILL_NUMBER" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </array>
+        <map name="ebillsMap" inverse="true">
+            <key column="EBILLER_ID" />
+            <map-key column="EBILL_ID" type="long" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </map>
+        <set name="ebillsSortedSet" inverse="true" sort="natural">
+            <key column="EBILLER_ID" not-null="true" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </set>
+        <map name="ebillsSortedMap" inverse="true" sort="natural">
+            <key column="EBILLER_ID" />
+            <map-key formula="EBILL_ID" type="long" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </map>
+    </class>
 </hibernate-mapping>

@@ -1,8 +1,9 @@
 package courses.hibernate.vo;
 
-import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 
 /**
  * Domain object representing an Account
@@ -15,7 +16,7 @@ public class Account {
 	private String accountType;
 	private Date creationDate;
 	private double balance;
-	private Collection<EBiller> ebillers = new ArrayList<EBiller>();
+	private Set<EBiller> ebillers = new HashSet();
 
 	/**
 	 * Get accountId
@@ -95,7 +96,7 @@ public class Account {
 	 * 
 	 * @param ebillers
 	 */
-	protected void setEbillers(Collection<EBiller> ebillers) {
+	protected void setEbillers(Set<EBiller> ebillers) {
 		this.ebillers = ebillers;
 	}
 
