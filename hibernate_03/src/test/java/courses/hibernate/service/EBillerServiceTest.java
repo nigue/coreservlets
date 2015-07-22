@@ -23,7 +23,7 @@ public class EBillerServiceTest extends ServiceTest {
      * and accounts and build associations. Ensure that retrieval of the
      * ebillers and accounts have the appropriate relationships.
      */
-    @Test
+//    @Test
     public void testManyToManyAccountEBillers() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -75,9 +75,9 @@ public class EBillerServiceTest extends ServiceTest {
         // cleanup
         // -------
         deleteAccount(account2);
-        deleteAccount(account1);
-        deleteEBiller(ebiller1);
-        deleteEBiller(ebiller2);
+//        deleteAccount(account1);
+//        deleteEBiller(ebiller1);
+//        deleteEBiller(ebiller2);
         HibernateUtil.getSessionFactory().close();
     }
 
@@ -87,7 +87,7 @@ public class EBillerServiceTest extends ServiceTest {
      * correct number of ebills. Also, ensure that the list of balances loaded
      * by the collection mapping is correct.
      */
-//	@Test
+	@Test
     public void testCreateMultipleEBills() {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
