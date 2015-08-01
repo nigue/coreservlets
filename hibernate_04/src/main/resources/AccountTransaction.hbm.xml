@@ -1,0 +1,19 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="courses.hibernate.vo.AccountTransaction" table="ACCOUNT_TRANSACTION">
+		<id name="accountTransactionId" column="ACCOUNT_TRANSACTION_ID">
+			<generator class="native" />
+		</id>
+		<property name="transactionType" column="TRANSACTION_TYPE"
+			type="string" />
+		<property name="transactionDate" column="TXDATE" type="timestamp" />
+		<property name="amount" column="AMOUNT" type="double" />
+		<one-to-one name="ebill" class="courses.hibernate.vo.EBill"
+			property-ref="accountTransaction" />
+		<many-to-one name="account" column="ACCOUNT_ID"
+			class="courses.hibernate.vo.Account" access="field" />
+	</class>
+</hibernate-mapping>
