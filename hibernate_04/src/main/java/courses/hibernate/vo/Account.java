@@ -16,7 +16,7 @@ public abstract class Account {
 	private Date creationDate;
 	private double balance;
 	private Collection<EBillerRegistration> ebillerRegistrations = new ArrayList<EBillerRegistration>();
-	private Collection<AccountOwner> accountOwners = new ArrayList<AccountOwner>();
+	private Set<AccountOwner> accountOwners = new HashSet<AccountOwner>();
 	private SortedSet<EBill> ebills = new TreeSet<EBill>();
 	private SortedSet<AccountTransaction> accountTransactions = new TreeSet<AccountTransaction>();
 	private Set<Address> accountOwnerAddresses = new HashSet<Address>();
@@ -130,7 +130,7 @@ public abstract class Account {
 	 * 
 	 * @param accountOwners
 	 */
-	protected void setAccountOwners(Collection<AccountOwner> accountOwners) {
+	protected void setAccountOwners(Set<AccountOwner> accountOwners) {
 		this.accountOwners = accountOwners;
 	}
 

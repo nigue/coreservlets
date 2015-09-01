@@ -143,7 +143,7 @@ public class EBillerServiceTest extends ServiceTest {
      * correct number of ebills. Also, ensure that the list of balances loaded
      * by the collection mapping is correct.
      */
-//    @Test
+    @Test
     public void testCreateMultipleEBills() {
 
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();

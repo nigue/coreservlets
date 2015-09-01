@@ -1,5 +1,6 @@
 package courses.hibernate.vo;
 
+import java.util.Collection;
 import java.util.HashSet;
 import java.util.Set;
 
@@ -14,7 +15,7 @@ public class AccountOwner {
 	private Address address;
 	private String homePhone;
 	private String cellPhone;
-	private Set<Account> accounts = new HashSet<Account>();
+	private Collection<Account> accounts = new HashSet<Account>();
 
 	/**
 	 * Get accountOwnerId
@@ -144,7 +145,7 @@ public class AccountOwner {
 	 * 
 	 * @return accounts
 	 */
-	public Set<Account> getAccounts() {
+	public Collection<Account> getAccounts() {
 		return accounts;
 	}
 

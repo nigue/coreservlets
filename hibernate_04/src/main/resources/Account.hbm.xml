@@ -3,60 +3,75 @@
         "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
         "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
 <hibernate-mapping>
-	<class name="courses.hibernate.vo.Account" table="ACCOUNT">
-		<id name="accountId" column="ACCOUNT_ID">
-			<generator class="native" />
-		</id>
-		<discriminator column="ACCOUNT_TYPE" type="string" />
+    <class name="courses.hibernate.vo.Account" table="ACCOUNT">
+        <id name="accountId" column="ACCOUNT_ID">
+            <generator class="native" />
+        </id>
+        <discriminator column="ACCOUNT_TYPE" type="string" />
 		
-		<property name="creationDate" column="CREATION_DATE" type="timestamp"
-			update="false" />
-		<property name="balance" column="BALANCE" type="double" />
+        <property name="creationDate" column="CREATION_DATE" type="timestamp"
+                  update="false" />
+        <property name="balance" column="BALANCE" type="double" />
 						
-		<bag name="ebillerRegistrations" inverse="true">
-			<key column="ACCOUNT_ID" not-null="true" />
-			<one-to-many class="courses.hibernate.vo.EBillerRegistration" />
-		</bag>
-		<set name="accountTransactions" inverse="true" sort="natural">
-			<key column="ACCOUNT_ID" not-null="true" />
-			<one-to-many class="courses.hibernate.vo.AccountTransaction" />
-		</set>
-		<set name="ebills" inverse="true" sort="natural">
-			<key column="ACCOUNT_ID" not-null="true" />
-			<one-to-many class="courses.hibernate.vo.EBill" />
-		</set>
-		<idbag name="accountOwners" table="ACCOUNT_ACCOUNT_OWNER">
-			<collection-id column="ACCOUNT_ACCOUNT_OWNER_ID" type="long">
-				<generator class="native" />
-			</collection-id>
-			<key column="ACCOUNT_ID" />
-			<many-to-many column="ACCOUNT_OWNER_ID" class="courses.hibernate.vo.AccountOwner" />
-		</idbag>
-		<set name="accountOwnerAddresses" table="ACCOUNT_ACCOUNT_OWNER">
-			<key column="ACCOUNT_ID" />
-			<composite-element class="courses.hibernate.vo.Address">
-				<property name="streetAddress" type="string"
-					formula="(SELECT AO.STREET_ADDRESS FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
-				<property name="city" type="string"
-					formula="(SELECT AO.CITY FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
-				<property name="state" type="string"
-					formula="(SELECT AO.STATE FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
-				<nested-composite-element name="zipCode"
-					class="courses.hibernate.vo.ZipCode">
-					<property name="zip" type="string"
-						formula="(SELECT AO.ZIP_CODE FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
-					<property name="plus4" type="string"
-						formula="(SELECT AO.ZIP_PLUS_FOUR FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
-				</nested-composite-element>
-			</composite-element>
-		</set>
+        <bag name="ebillerRegistrations" inverse="true">
+            <key column="ACCOUNT_ID" not-null="true" />
+            <one-to-many class="courses.hibernate.vo.EBillerRegistration" />
+        </bag>
+        <set name="accountTransactions" inverse="true" sort="natural">
+            <key column="ACCOUNT_ID" not-null="true" />
+            <one-to-many class="courses.hibernate.vo.AccountTransaction" />
+        </set>
+        <set name="ebills" inverse="true" sort="natural">
+            <key column="ACCOUNT_ID" not-null="true" />
+            <one-to-many class="courses.hibernate.vo.EBill" />
+        </set>
+        <!--        <idbag name="accountOwners" table="ACCOUNT_ACCOUNT_OWNER">
+            <collection-id column="ACCOUNT_ACCOUNT_OWNER_ID" type="long">
+                <generator class="native" />
+            </collection-id>
+            <key column="ACCOUNT_ID" />
+            <many-to-many column="ACCOUNT_OWNER_ID" class="courses.hibernate.vo.AccountOwner" />
+        </idbag>-->
+        <set name="accountOwners" 
+             table="ACCOUNT_ACCOUNT_OWNER"  
+             cascade="all" 
+             inverse="false"  
+             lazy="true" 
+             fetch="select">
+            <key>
+                <column name="ACCOUNT_ID" 
+                        not-null="true" />
+            </key>
+            <many-to-many entity-name="courses.hibernate.vo.AccountOwner" >
+                <column name="ACCOUNT_OWNER_ID"
+                        not-null="true" />
+            </many-to-many>
+        </set>
+        <set name="accountOwnerAddresses" table="ACCOUNT_ACCOUNT_OWNER">
+            <key column="ACCOUNT_ID" />
+            <composite-element class="courses.hibernate.vo.Address">
+                <property name="streetAddress" type="string"
+                          formula="(SELECT AO.STREET_ADDRESS FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
+                <property name="city" type="string"
+                          formula="(SELECT AO.CITY FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
+                <property name="state" type="string"
+                          formula="(SELECT AO.STATE FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
+                <nested-composite-element name="zipCode"
+                                          class="courses.hibernate.vo.ZipCode">
+                    <property name="zip" type="string"
+                              formula="(SELECT AO.ZIP_CODE FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
+                    <property name="plus4" type="string"
+                              formula="(SELECT AO.ZIP_PLUS_FOUR FROM ACCOUNT_OWNER AO WHERE AO.ACCOUNT_OWNER_ID = ACCOUNT_OWNER_ID)" />
+                </nested-composite-element>
+            </composite-element>
+        </set>
 		
-		<subclass name="courses.hibernate.vo.SavingsAccount" discriminator-value="SAVINGS">
-			<property name="interestRate" column="INTEREST_RATE" type="double" />
-		</subclass>
-		<subclass name="courses.hibernate.vo.CheckingAccount" discriminator-value="CHECKING">
-			<property name="checkStyle" column="CHECK_STYLE" type="string" />
-		</subclass>
+        <subclass name="courses.hibernate.vo.SavingsAccount" discriminator-value="SAVINGS">
+            <property name="interestRate" column="INTEREST_RATE" type="double" />
+        </subclass>
+        <subclass name="courses.hibernate.vo.CheckingAccount" discriminator-value="CHECKING">
+            <property name="checkStyle" column="CHECK_STYLE" type="string" />
+        </subclass>
 		
-	</class>
+    </class>
 </hibernate-mapping>
