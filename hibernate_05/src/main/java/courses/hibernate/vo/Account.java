@@ -3,6 +3,8 @@ package courses.hibernate.vo;
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.Date;
+import java.util.HashSet;
+import java.util.Set;
 import java.util.SortedSet;
 import java.util.TreeSet;
 
@@ -14,7 +16,7 @@ public abstract class Account {
 	private Date creationDate;
 	private double balance;
 	private Collection<EBillerRegistration> ebillerRegistrations = new ArrayList<EBillerRegistration>();
-	private Collection<AccountOwner> accountOwners = new ArrayList<AccountOwner>();
+	private Set<AccountOwner> accountOwners = new HashSet<AccountOwner>();
 	private SortedSet<EBill> ebills = new TreeSet<EBill>();
 	private SortedSet<AccountTransaction> accountTransactions = new TreeSet<AccountTransaction>();
 
@@ -127,7 +129,7 @@ public abstract class Account {
 	 * 
 	 * @param accountOwners
 	 */
-	protected void setAccountOwners(Collection<AccountOwner> accountOwners) {
+	protected void setAccountOwners(Set<AccountOwner> accountOwners) {
 		this.accountOwners = accountOwners;
 	}
 

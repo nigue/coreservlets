@@ -31,16 +31,16 @@ public class AccountServiceTest extends ServiceTest {
     /**
      * Test account creation
      */
-    @Test
+    //@Test
     public void testCreateAccount() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
-		// create the account
+        // create the account
         // ------ --- -------
         SavingsAccount account = new SavingsAccount();
 
-		// no need to set id, Hibernate does it for us
+        // no need to set id, Hibernate does it for us
         // -- ---- -- --- --- --------- ---- -- --- --
         // account.setAccountId(1)
         account.setCreationDate(new Date());
@@ -49,7 +49,7 @@ public class AccountServiceTest extends ServiceTest {
 
         TestCase.assertTrue(account.getAccountId() == 0);
 
-		// save the account
+        // save the account
         // ---- --- -------
         AccountService accountService = new AccountService();
         accountService.saveOrUpdateAccount(account);
@@ -59,11 +59,11 @@ public class AccountServiceTest extends ServiceTest {
 
         System.out.println("var account = " + account);
 
-		// check that IDs were set after the hbm session
+        // check that IDs were set after the hbm session
         // ----- ---- --- ---- --- ----- --- --- -------
         TestCase.assertTrue(account.getAccountId() > 0);
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -72,7 +72,7 @@ public class AccountServiceTest extends ServiceTest {
     /**
      * Test retrieval of account
      */
-//    @Test
+    //@Test
     public void testGetAccount() {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -91,14 +91,14 @@ public class AccountServiceTest extends ServiceTest {
 
         System.out.println("var anotherCopy = " + anotherCopy);
 
-		// make sure these are two separate instances
+        // make sure these are two separate instances
         // ---- ---- ----- --- --- -------- ---------
         TestCase.assertTrue(account != anotherCopy);
 
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -129,7 +129,7 @@ public class AccountServiceTest extends ServiceTest {
         Account anotherCopy = accountService.getAccount(account.getAccountId());
         System.out.println("var anotherCopy = " + anotherCopy);
 
-		// make sure the one we just pulled back
+        // make sure the one we just pulled back
         // from the database has the updated balance
         // -----------------------------------------
         TestCase.assertTrue(anotherCopy.getBalance() == 2000);
@@ -137,7 +137,7 @@ public class AccountServiceTest extends ServiceTest {
         session2.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -159,11 +159,11 @@ public class AccountServiceTest extends ServiceTest {
         accountService.saveOrUpdateAccount(account);
         session.getTransaction().commit();
 
-		// close session -- detaches account
+        // close session -- detaches account
         // ----- ------- -- -------- -------
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// update detached account object
+        // update detached account object
         // ------ -------- ------- ------
         account.setBalance(2000);
 
@@ -171,16 +171,16 @@ public class AccountServiceTest extends ServiceTest {
                 .getCurrentSession();
         session2.beginTransaction();
 
-		// reattach
+        // reattach
         // --------
         session2.update(account);
 
-		// commit changes
+        // commit changes
         // ------ -------
         session2.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// make sure the one we just pulled back
+        // make sure the one we just pulled back
         // from the database has the updated balance
         // -----------------------------------------
         Session session3 = HibernateUtil.getSessionFactory()
@@ -194,7 +194,7 @@ public class AccountServiceTest extends ServiceTest {
         session3.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -211,7 +211,7 @@ public class AccountServiceTest extends ServiceTest {
         Account account = createCheckingAccount();
         System.out.println("var account = " + account);
 
-		// delete the account
+        // delete the account
         // ------ --- -------
         AccountService accountService = new AccountService();
         accountService.deleteAccount(account);
@@ -219,7 +219,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// try to get the account again -- should be null
+        // try to get the account again -- should be null
         // --- -- --- --- ------- ----- -- ------ -- ----
         Session session2 = HibernateUtil.getSessionFactory()
                 .getCurrentSession();
@@ -249,7 +249,7 @@ public class AccountServiceTest extends ServiceTest {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
-		// Create AccountOwners and Accounts
+        // Create AccountOwners and Accounts
         // ------ ------------- --- --------
         AccountOwner accountOwner1 = createAccountOwner("111-11-1111");
         AccountOwner accountOwner2 = createAccountOwner("222-22-2222");
@@ -267,7 +267,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Load AccountOwner and ensure counts of accounts are correct
+        // Load AccountOwner and ensure counts of accounts are correct
         // ---- ------------ --- ------ ------ -- -------- --- -------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -280,7 +280,7 @@ public class AccountServiceTest extends ServiceTest {
         TestCase.assertEquals(2, accountOwner1.getAccounts().size());
         TestCase.assertEquals(1, accountOwner2.getAccounts().size());
 
-		// Load Accounts and ensure counts of AccountOwners are correct
+        // Load Accounts and ensure counts of AccountOwners are correct
         // ---- -------- --- ------ ------ -- ------------- --- -------
         account1 = accountService.getAccount(account1.getAccountId());
         account2 = accountService.getAccount(account2.getAccountId());
@@ -294,12 +294,12 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account1);
-        deleteAccount(account2);
-        deleteAccountOwner(accountOwner1);
-        deleteAccountOwner(accountOwner2);
+//        deleteAccount(account2);
+//        deleteAccountOwner(accountOwner1);
+//        deleteAccountOwner(accountOwner2);
         HibernateUtil.getSessionFactory().close();
     }
 
@@ -315,11 +315,11 @@ public class AccountServiceTest extends ServiceTest {
         EBillService ebillService = new EBillService();
         List<EBill> ebills = new ArrayList<EBill>();
 
-		// Create an account
+        // Create an account
         // ------ -- -------
         Account account = createCheckingAccount();
 
-		// Create 10 ebills for account. Because this is a set, need
+        // Create 10 ebills for account. Because this is a set, need
         // some time between the ebills to set a different due date,
         // hence the sleep
         // ---------------------------------------------------------
@@ -335,7 +335,7 @@ public class AccountServiceTest extends ServiceTest {
 
         long accountId = account.getAccountId();
 
-		// Retrieve the persisted account and ensure that the account
+        // Retrieve the persisted account and ensure that the account
         // contains the 10 ebills.
         // ----------------------------------------------------------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -350,7 +350,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -368,11 +368,11 @@ public class AccountServiceTest extends ServiceTest {
         AccountTransactionService accountTransactionService = new AccountTransactionService();
         List<AccountTransaction> accountTransactions = new ArrayList<AccountTransaction>();
 
-		// Create an account
+        // Create an account
         // ------ -- -------
         Account account = createCheckingAccount();
 
-		// Create 10 account transactions for account. Because this is a
+        // Create 10 account transactions for account. Because this is a
         // set, need some time between the ebills to set a different due
         // date, hence the sleep
         // ---------------------------------------------------------
@@ -390,7 +390,7 @@ public class AccountServiceTest extends ServiceTest {
 
         long accountId = account.getAccountId();
 
-		// Retrieve the persisted account and ensure that the account
+        // Retrieve the persisted account and ensure that the account
         // contains the 10 transactions.
         // ----------------------------------------------------------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -406,7 +406,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -420,7 +420,7 @@ public class AccountServiceTest extends ServiceTest {
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
-		// Create two checking accounts and three savings accounts
+        // Create two checking accounts and three savings accounts
         // ------ --- -------- -------- --- ----- ------- --------
         createCheckingAccount();
         createCheckingAccount();
@@ -432,7 +432,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Retrieve the accounts and confirm that 5 accounts are retrieved,
+        // Retrieve the accounts and confirm that 5 accounts are retrieved,
         // 2 checking accounts, and 3 savings accounts
         // ----------------------------------------------------------------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -454,7 +454,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         for (Account account : accounts) {
             deleteAccount(account);
@@ -468,7 +468,7 @@ public class AccountServiceTest extends ServiceTest {
 //    @Test
     public void testUpdateAccountBalanceWithFlushModes() {
 
-		// Flush mode by default is AUTO, so update is changed when
+        // Flush mode by default is AUTO, so update is changed when
         // transaction commits without an explicit call to save.
         // --------------------------------------------------------
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -480,7 +480,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// make sure the one we just pulled back from the database has
+        // make sure the one we just pulled back from the database has
         // the original balance
         // -----------------------------------------------------------
         Session session2 = HibernateUtil.getSessionFactory()
@@ -496,7 +496,7 @@ public class AccountServiceTest extends ServiceTest {
         session2.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Change flush mode to manual and confirm that update does not
+        // Change flush mode to manual and confirm that update does not
         // occur when transaction commits.
         // -----------------------------------------------------------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -507,7 +507,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// make sure the one we just pulled back from the database does not
+        // make sure the one we just pulled back from the database does not
         // have the updated balance
         // ----------------------------------------------------------------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -520,7 +520,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -532,7 +532,7 @@ public class AccountServiceTest extends ServiceTest {
 //    @Test
     public void testAccountDeleteCascade() {
 
-		// Create Account, AccountOwner, and AccountTransaction and set
+        // Create Account, AccountOwner, and AccountTransaction and set
         // AccountOwner and AccountTransaction on Account
         // ------------------------------------------------------------
         Session session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -542,8 +542,7 @@ public class AccountServiceTest extends ServiceTest {
         AccountOwner accountOwner1 = createAccountOwner("111-11-1111");
         AccountOwner accountOwner2 = createAccountOwner("222-22-2222");
 
-        AccountTransaction accountTransaction = createElectronicAccountTransaction(
-                account, 10);
+        AccountTransaction accountTransaction = createElectronicAccountTransaction(account, 10);
 
         account.addAccountOwner(accountOwner1);
         account.addAccountOwner(accountOwner2);
@@ -555,7 +554,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Delete the account
+        // Delete the account
         // ------ --- -------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -565,7 +564,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Retrieve the account and confirm that the account and
+        // Retrieve the account and confirm that the account and
         // accountTransaction have been deleted
         // -----------------------------------------------------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -575,27 +574,25 @@ public class AccountServiceTest extends ServiceTest {
         TestCase.assertNull(account);
 
         AccountTransactionService accountTransactionService = new AccountTransactionService();
-        accountTransaction = accountTransactionService
-                .getAccountTransaction(accountTransaction
-                        .getAccountTransactionId());
+        accountTransaction = accountTransactionService.getAccountTransaction(accountTransaction.getAccountTransactionId());
         TestCase.assertNull(accountTransaction);
 
-		// Retrieve the account owner and confirm account owners have
+        // Retrieve the account owner and confirm account owners have
         // not been deleted
         // ----------------------------------------------------------
         AccountOwnerService accountOwnerService = new AccountOwnerService();
-        accountOwner1 = accountOwnerService.getAccountOwner(accountOwner1
-                .getAccountOwnerId());
-        accountOwner2 = accountOwnerService.getAccountOwner(accountOwner2
-                .getAccountOwnerId());
+        accountOwner1 = accountOwnerService.getAccountOwner(accountOwner1.getAccountOwnerId());
+        accountOwner2 = accountOwnerService.getAccountOwner(accountOwner2.getAccountOwnerId());
 
-        TestCase.assertNotNull(accountOwner1);
-        TestCase.assertNotNull(accountOwner2);
+//        TestCase.assertNotNull(accountOwner1);
+//        TestCase.assertNotNull(accountOwner2);
+        TestCase.assertNull(accountOwner1);
+        TestCase.assertNull(accountOwner2);
 
-		// Cleanup Account Owners
+        // Cleanup Account Owners
         // ------- ------- ------
-        accountOwnerService.deleteAccountOwner(accountOwner1);
-        accountOwnerService.deleteAccountOwner(accountOwner2);
+//        accountOwnerService.deleteAccountOwner(accountOwner1);
+//        accountOwnerService.deleteAccountOwner(accountOwner2);
         HibernateUtil.getSessionFactory().close();
     }
 
@@ -609,7 +606,7 @@ public class AccountServiceTest extends ServiceTest {
 
         Account account = createCheckingAccount();
 
-		// Create two physical account transactions and three electronic account
+        // Create two physical account transactions and three electronic account
         // transactions. Sleep in between to give different transaction dates.
         // ---------------------------------------------------------------------
         createPhysicalAccountTransaction(account, 10);
@@ -625,7 +622,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Retrieve the account transactions and confirm that 5 accounts are
+        // Retrieve the account transactions and confirm that 5 accounts are
         // retrieved, 2 physical account transactions, and 3 electronic account
         // transactions.
         // --------------------------------------------------------------------
@@ -639,18 +636,13 @@ public class AccountServiceTest extends ServiceTest {
         List<ElectronicAccountTransaction> electronicAccountTransactions = new ArrayList<ElectronicAccountTransaction>();
         List<PhysicalAccountTransaction> physicalAccountTransactions = new ArrayList<PhysicalAccountTransaction>();
 
-        for (Iterator<AccountTransaction> iterator = accountTransactions
-                .iterator(); iterator.hasNext();) {
-            AccountTransaction accountTransaction = iterator.next();
+        for (AccountTransaction accountTransaction : accountTransactions) {
             if (accountTransaction instanceof ElectronicAccountTransaction) {
-                electronicAccountTransactions
-                        .add((ElectronicAccountTransaction) accountTransaction);
+                electronicAccountTransactions.add((ElectronicAccountTransaction) accountTransaction);
             }
             if (accountTransaction instanceof PhysicalAccountTransaction) {
-                physicalAccountTransactions
-                        .add((PhysicalAccountTransaction) accountTransaction);
+                physicalAccountTransactions.add((PhysicalAccountTransaction) accountTransaction);
             }
-
         }
 
         TestCase.assertEquals(5, accountTransactions.size());
@@ -660,7 +652,7 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
@@ -675,14 +667,12 @@ public class AccountServiceTest extends ServiceTest {
         session.beginTransaction();
 
         Account account = createCheckingAccount();
-        AccountTransaction accountTransaction = createPhysicalAccountTransaction(
-                account, 10);
-        long accountTransactionId = accountTransaction
-                .getAccountTransactionId();
+        AccountTransaction accountTransaction = createPhysicalAccountTransaction(account, 10);
+        long accountTransactionId = accountTransaction.getAccountTransactionId();
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Remove transaction from account
+        // Remove transaction from account
         // ------ ----------- ---- -------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
@@ -694,21 +684,20 @@ public class AccountServiceTest extends ServiceTest {
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// Get transaction and make sure it's been deleted
+        // Get transaction and make sure it's been deleted
         // --- ----------- --- ---- ---- ---- ---- -------
         session = HibernateUtil.getSessionFactory().getCurrentSession();
         session.beginTransaction();
 
         AccountTransactionService accountTransactionService = new AccountTransactionService();
-        accountTransaction = accountTransactionService
-                .getAccountTransaction(accountTransactionId);
+        accountTransaction = accountTransactionService.getAccountTransaction(accountTransactionId);
 
         TestCase.assertNull(accountTransaction);
 
         session.getTransaction().commit();
         HibernateUtil.getSessionFactory().getCurrentSession().close();
 
-		// cleanup
+        // cleanup
         // -------
         deleteAccount(account);
         HibernateUtil.getSessionFactory().close();
