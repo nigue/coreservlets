@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<datasources>
+    <local-tx-datasource>
+        <jndi-name>Lecture6DS</jndi-name>
+ 
+        <!-- Derby Configuration -->
+		
+        <connection-url>jdbc:derby://localhost:1527/LECTURE6</connection-url>
+        <driver-class>org.apache.derby.jdbc.ClientDriver</driver-class>
+ 	 	
+        <!-- Oracle Configuration -->
+        <!--		<connection-url>jdbc:oracle:thin:@localhost:1521:XE</connection-url>
+        <driver-class>oracle.jdbc.driver.OracleDriver</driver-class>
+        <user-name>lecture6</user-name> 
+        <password>lecture6</password>-->
+		
+        <min-pool-size>5</min-pool-size>
+        <max-pool-size>100</max-pool-size>
+    </local-tx-datasource>
+</datasources>

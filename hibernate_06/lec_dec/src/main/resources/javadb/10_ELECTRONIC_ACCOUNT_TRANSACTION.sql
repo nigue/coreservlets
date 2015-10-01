@@ -1,0 +1,24 @@
+-------------------------------------------------------------------------------------------
+-- ELECTRONIC_ACCOUNT_TRANSACTION
+-------------------------------------------------------------------------------------------
+CREATE TABLE ELECTRONIC_ACCOUNT_TRANSACTION
+(
+  ELECTRONIC_ACCOUNT_TRX_ID	BIGINT		    NOT NULL,
+  IP_ADDRESS				VARCHAR(4000)	NOT NULL
+);
+
+
+-------------
+--PRIMARY KEY
+-------------
+
+ALTER TABLE ELECTRONIC_ACCOUNT_TRANSACTION ADD CONSTRAINT E_TX_PK PRIMARY KEY
+    (ELECTRONIC_ACCOUNT_TRX_ID);
+
+--------------
+--FOREIGN KEYS
+--------------
+
+ALTER TABLE ELECTRONIC_ACCOUNT_TRANSACTION ADD CONSTRAINT TX_EACNTTRX_ACNTTRX_FK FOREIGN KEY
+    (ELECTRONIC_ACCOUNT_TRX_ID)
+    REFERENCES ACCOUNT_TRANSACTION (ACCOUNT_TRANSACTION_ID);
