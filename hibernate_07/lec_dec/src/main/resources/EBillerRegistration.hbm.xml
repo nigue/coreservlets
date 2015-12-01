@@ -1,0 +1,20 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="courses.hibernate.vo.EBillerRegistration" table="ACCOUNT_EBILLER"
+		mutable="false">
+		<id name="ebillerRegistrationId" column="ACCOUNT_EBILLER_ID">
+			<generator class="native" />
+		</id>
+		<property name="dateAdded" column="DATE_ADDED" type="timestamp" />
+		<property name="accountNumber" column="ACCOUNT_NUMBER" type="string" />
+		<many-to-one name="ebiller" column="EBILLER_ID"
+			class="courses.hibernate.vo.EBiller" update="false" access="field" />
+		<many-to-one name="account" column="ACCOUNT_ID"
+			class="courses.hibernate.vo.Account" update="false" access="field" />
+		<many-to-one name="registeredBy" column="ACCOUNT_OWNER_ID"
+			class="courses.hibernate.vo.AccountOwner" update="false" />
+	</class>
+</hibernate-mapping>

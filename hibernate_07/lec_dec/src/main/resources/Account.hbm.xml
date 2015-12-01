@@ -1,0 +1,48 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="courses.hibernate.vo.Account" table="ACCOUNT">
+		<id name="accountId" column="ACCOUNT_ID">
+			<generator class="native" />
+		</id>
+		<discriminator column="ACCOUNT_TYPE" type="string" />
+		<version name="version" column="VERSION" type ="long" access="field"/>
+		
+		<property name="creationDate" column="CREATION_DATE" type="timestamp"
+			update="false" />
+		<property name="balance" column="BALANCE" type="double" />
+						
+		<bag name="ebillerRegistrations" inverse="true" cascade="delete">
+			<key column="ACCOUNT_ID" not-null="true" />
+			<one-to-many class="courses.hibernate.vo.EBillerRegistration" />
+		</bag>
+		<set name="accountTransactions" inverse="true" sort="natural" cascade="delete-orphan,delete">
+			<key column="ACCOUNT_ID" not-null="true" />
+			<one-to-many class="courses.hibernate.vo.AccountTransaction" />
+		</set>
+		<set name="ebills" inverse="true" sort="natural" cascade="delete">
+			<key column="ACCOUNT_ID" not-null="true" />
+			<one-to-many class="courses.hibernate.vo.EBill" />
+		</set>
+		<idbag name="accountOwners" table="ACCOUNT_ACCOUNT_OWNER" lazy="true">
+			<collection-id column="ACCOUNT_ACCOUNT_OWNER_ID" type="long">
+				<generator class="native" />
+			</collection-id>
+			<key column="ACCOUNT_ID" />
+			<many-to-many column="ACCOUNT_OWNER_ID" class="courses.hibernate.vo.AccountOwner" />
+		</idbag>
+		
+		<subclass name="courses.hibernate.vo.SavingsAccount" discriminator-value="SAVINGS">
+			<property name="interestRate" column="INTEREST_RATE" type="double" />
+		</subclass>
+		<subclass name="courses.hibernate.vo.CheckingAccount" discriminator-value="CHECKING">
+			<property name="checkStyle" column="CHECK_STYLE" type="string" />
+		</subclass>
+		<subclass name="courses.hibernate.vo.CdAccount" discriminator-value="CD">
+			<property name="interestRate" column="INTEREST_RATE" type="double" />
+			<property name="maturityDate" column="MATURITY_DATE" type="timestamp" />
+		</subclass>		
+	</class>
+</hibernate-mapping>

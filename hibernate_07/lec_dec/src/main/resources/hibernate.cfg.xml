@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+		<!-- Derby Configuration -->		  
+		<!-- 		
+		<property name="dialect">org.hibernate.dialect.DerbyDialect</property>
+		-->
+		 
+		<!-- Oracle Configuration -->
+		<property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>
+
+		<property name="hibernate.connection.datasource">java:/Lecture6DS</property>
+		 
+        <!-- Declarative Transaction Management -->
+		<property name="current_session_context_class">jta</property>
+		<property name="transaction.factory_class">org.hibernate.transaction.CMTTransactionFactory</property>
+		<property name="transaction.manager_lookup_class">org.hibernate.transaction.JBossTransactionManagerLookup</property>
+
+        <!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">false</property>
+
+		<!--  Load all mapping files -->
+		<mapping resource="Account.hbm.xml" />
+		<mapping resource="AccountOwner.hbm.xml" />
+		<mapping resource="AccountTransaction.hbm.xml" />
+		<mapping resource="EBill.hbm.xml" />
+		<mapping resource="EBiller.hbm.xml" />
+		<mapping resource="EBillerRegistration.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
