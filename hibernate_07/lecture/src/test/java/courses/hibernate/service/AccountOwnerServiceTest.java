@@ -23,7 +23,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test optimistic locking with updating of account owner cell phone
      */
-    @Test
+//    @Test
     public void testOptimisiticLockingOnUpdateAccountOwnerCellPhone() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -48,7 +48,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
         }
 
         try {
-			// Retrieve the account owner and update it. Now, the version is
+            // Retrieve the account owner and update it. Now, the version is
             // incremented to 1
             // -------------------------------------------------------------
             session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -67,7 +67,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
 
         boolean reachedException = false;
         try {
-			// Update accountOwner1 -- since the version numbers do not match
+            // Update accountOwner1 -- since the version numbers do not match
             // should throw StaleStateException
             // --------------------------------------------------------------
             session = HibernateUtil.getSessionFactory().getCurrentSession();
@@ -85,15 +85,14 @@ public class AccountOwnerServiceTest extends ServiceTest {
         TestCase.assertTrue(reachedException);
 
         try {
-			// Retrieve the account owner and ensure that the account has the
+            // Retrieve the account owner and ensure that the account has the
             // balance from the successful update
             // ----------------------------------------------------------------
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
             accountOwner = accountOwnerService.getAccountOwner(accountOwnerId);
             System.out.println(accountOwner);
-            TestCase.assertTrue(accountOwner.getCellPhone()
-                    .equals("123-456-7890"));
+            TestCase.assertTrue(accountOwner.getCellPhone().equals("123-456-7890"));
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -103,7 +102,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
             HibernateUtil.getSessionFactory().getCurrentSession().close();
         }
 
-		// cleanup
+        // cleanup
         // -------
         try {
             deleteAccountOwner(accountOwner);
@@ -115,7 +114,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- balanceMinimum
      */
-    //@Test
+//    @Test
     public void testGetAccountsByBalanceMinimum() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -144,17 +143,15 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwner -- using restrictions
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnerUsingRestrictions() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
         try {
             session = HibernateUtil.getSessionFactory().getCurrentSession();
             session.beginTransaction();
-            AccountOwner accountOwner = accountOwnerService
-                    .getAccountOwnerUsingRestrictions("martyhall@coreservlets.com");
-            TestCase.assertEquals(accountOwner.getEmail(),
-                    "martyhall@coreservlets.com");
+            AccountOwner accountOwner = accountOwnerService.getAccountOwnerUsingRestrictions("martyhall@coreservlets.com");
+            TestCase.assertEquals(accountOwner.getEmail(),"martyhall@coreservlets.com");
             System.out.println(accountOwner);
             session.getTransaction().commit();
         } catch (HibernateException e) {
@@ -170,7 +167,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwner -- using property
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnerUsingProperty() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -181,7 +178,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
                     .getAccountOwnerUsingProperty("martyhall@coreservlets.com");
             TestCase.assertEquals(accountOwner.getEmail(),
                     "martyhall@coreservlets.com");
-            System.out.println(accountOwner);
+            System.out.println("testGetAccountOwnerUsingProperty: "+accountOwner);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -196,7 +193,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- zip code
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersByZipCode() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -210,7 +207,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
                 TestCase.assertTrue(accountOwner.getAddress().getZipCode()
                         .getZip().equals("12345"));
             }
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersByZipCode: "+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -225,7 +222,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- first name/last name prefix
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersByFirstNameLastNamePrefix() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -242,7 +239,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
                 TestCase.assertTrue(accountOwner.getLastName().startsWith("H"));
             }
 
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersByFirstNameLastNamePrefix: "+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -257,7 +254,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- using or
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersUsingOr() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -275,7 +272,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
                             .startsWith("H"));
                 }
             }
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersUsingOr"+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -290,7 +287,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- using junctions
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersUsingJunctions() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -309,7 +306,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
                             .startsWith("H"));
                 }
             }
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersUsingJunctions"+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -324,7 +321,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- detachedCriteria
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersByDetachedCriteria() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -340,7 +337,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
             for (AccountOwner accountOwner : accountOwners) {
                 TestCase.assertTrue(accountOwner.getLastName().startsWith("M"));
             }
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersByDetachedCriteria"+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -355,7 +352,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
     /**
      * Test getAccountOwners -- query by example
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersUsingExampleAccountOwner() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -370,7 +367,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
             for (AccountOwner accountOwner : accountOwners) {
                 TestCase.assertTrue(accountOwner.getLastName().equals("MOUSE"));
             }
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersUsingExampleAccountOwner"+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
@@ -386,7 +383,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
      * Test getAccountOwners -- query by example and query by criteria on
      * zipcode
      */
-    //@Test
+//    @Test
     public void testGetAccountOwnersUsingExampleAccountOwnerAndZipCode() {
         Session session = null;
         AccountOwnerService accountOwnerService = new AccountOwnerService();
@@ -403,7 +400,7 @@ public class AccountOwnerServiceTest extends ServiceTest {
                 TestCase.assertTrue(accountOwner.getAddress().getZipCode()
                         .getZip().equals("12345"));
             }
-            System.out.println(accountOwners);
+            System.out.println("testGetAccountOwnersUsingExampleAccountOwnerAndZipCode"+accountOwners);
             session.getTransaction().commit();
         } catch (HibernateException e) {
             e.printStackTrace();
