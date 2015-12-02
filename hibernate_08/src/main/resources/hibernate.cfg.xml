@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE hibernate-configuration PUBLIC
+		"-//Hibernate/Hibernate Configuration DTD 3.0//EN"
+		"http://hibernate.sourceforge.net/hibernate-configuration-3.0.dtd">
+<hibernate-configuration>
+	<session-factory>
+        <!-- Derby Configuration -->
+		 
+        <property name="hibernate.connection.driver_class">org.apache.derby.jdbc.ClientDriver</property>
+        <property name="hibernate.connection.url">jdbc:derby://localhost:1527/LECTURE8;create=true</property>
+        <property name="dialect">org.hibernate.dialect.DerbyDialect</property>
+		 
+		  	
+        <!-- Oracle Configuration -->
+        <!--	 	<property name="hibernate.connection.driver_class">oracle.jdbc.driver.OracleDriver</property>
+        <property name="hibernate.connection.url">jdbc:oracle:thin:@localhost:1521:XE</property>
+        <property name="hibernate.connection.username">lecture7</property>
+        <property name="hibernate.connection.password">lecture7</property>		
+        <property name="dialect">org.hibernate.dialect.Oracle10gDialect</property>-->
+
+        <!-- JDBC connection pool (use the built-in) -->
+		<property name="connection.pool_size">1</property>
+        
+        <!-- Enable Hibernate's automatic session context management -->
+		<property name="current_session_context_class">thread</property>
+
+        <!-- Echo all executed SQL to stdout -->
+		<property name="show_sql">true</property>
+		<property name="format_sql">false</property>
+
+		<!--  Load all mapping files -->
+		<mapping resource="Account.hbm.xml" />
+		<mapping resource="AccountOwner.hbm.xml" />
+		<mapping resource="AccountTransaction.hbm.xml" />
+		<mapping resource="EBill.hbm.xml" />
+		<mapping resource="EBiller.hbm.xml" />
+		<mapping resource="EBillerRegistration.hbm.xml" />
+	</session-factory>
+</hibernate-configuration>
