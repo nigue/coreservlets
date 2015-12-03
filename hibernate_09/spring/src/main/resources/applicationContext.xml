@@ -1,0 +1,188 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+    http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+    <!-- Derby Configuration
+    -->	
+    <bean id="dataSource"
+              class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName">
+            <value>org.apache.derby.jdbc.ClientDriver</value>
+        </property>
+        <property name="url">
+            <value>jdbc:derby://beanhost:1527/LECTURE9</value>
+        </property>
+    </bean>
+    	
+    <!--	<bean id="dataSource"
+            class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+            <property name="driverClassName">
+            <value>oracle.jdbc.driver.OracleDriver</value> </property> <property
+            name="url"> <value>jdbc:oracle:thin:@beanhost:1521:XE</value>
+            </property> <property name="username"> <value>lecture9</value>
+            </property> <property name="password"> <value>lecture9</value>
+            </property> 
+    </bean>-->
+    <bean id="hibernateProperties"
+              class="org.springframework.beans.factory.config.PropertiesFactoryBean">
+        <property name="properties">
+            <props>
+                <!-- Derby Configuration -->
+                <prop key="dialect">org.hibernate.dialect.DerbyDialect</prop>
+                <!--
+                        <prop key="dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                -->
+                <prop key="connection.pool_size">1</prop>
+                <prop key="show_sql">true</prop>
+                <prop key="format_sql">false</prop>
+                <prop key="current_session_context_class">thread</prop>
+                <prop key="hibernate.transaction.factory_class">org.hibernate.transaction.JDBCTransactionFactory</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="accountDateInterceptor" class="courses.hibernate.util.AccountDateInterceptor" />
+    <bean id="txManager"
+              class="org.springframework.orm.hibernate.HibernateTransactionManager">
+        <property name="sessionFactory" ref="sessionFactory" />
+    </bean>
+    <bean id="sessionFactory"
+              class="org.springframework.orm.hibernate3.LocalSessionFactoryBean">
+        <property name="dataSource">
+            <ref bean="dataSource" />
+        </property>
+        <property name="hibernateProperties">
+            <ref bean="hibernateProperties" />
+        </property>
+        <property name="mappingResources">
+            <list>
+                <value>Account.hbm.xml</value>
+                <value>ArchivedAccount.hbm.xml</value>
+                <value>AccountOwner.hbm.xml</value>
+                <value>AccountTransaction.hbm.xml</value>
+                <value>EBill.hbm.xml</value>
+                <value>EBiller.hbm.xml</value>
+                <value>EBillerRegistration.hbm.xml</value>
+            </list>
+        </property>
+        <property name="entityInterceptor">
+            <ref bean="accountDateInterceptor" />
+        </property>
+    </bean>
+    <bean id="accountDAO" class="courses.hibernate.dao.AccountDAO">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+    <bean id="accountOwnerDAO" class="courses.hibernate.dao.AccountOwnerDAO">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+    <bean id="accountTransactionDAO" class="courses.hibernate.dao.AccountTransactionDAO">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+    <bean id="ebillDAO" class="courses.hibernate.dao.EBillDAO">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+    <bean id="ebillerDAO" class="courses.hibernate.dao.EBillerDAO">
+        <constructor-arg ref="sessionFactory" />
+    </bean>
+    <bean id="accountServiceTarget" class="courses.hibernate.service.AccountService">
+        <property name="accountDAO">
+            <ref bean="accountDAO" />
+        </property>
+    </bean>
+    <bean id="accountOwnerServiceTarget" class="courses.hibernate.service.AccountOwnerService">
+        <property name="accountOwnerDAO">
+            <ref bean="accountOwnerDAO" />
+        </property>
+    </bean>
+    <bean id="accountTransactionServiceTarget" class="courses.hibernate.service.AccountTransactionService">
+        <property name="accountTransactionDAO">
+            <ref bean="accountTransactionDAO" />
+        </property>
+    </bean>
+    <bean id="ebillServiceTarget" class="courses.hibernate.service.EBillService">
+        <property name="ebillDAO">
+            <ref bean="ebillDAO" />
+        </property>
+    </bean>
+    <bean id="ebillerServiceTarget" class="courses.hibernate.service.EBillerService">
+        <property name="ebillerDAO">
+            <ref bean="ebillerDAO" />
+        </property>
+    </bean>
+    <bean id="transactionManager"
+              class="org.springframework.orm.hibernate3.HibernateTransactionManager">
+        <property name="sessionFactory">
+            <ref bean="sessionFactory" />
+        </property>
+    </bean>
+    <bean id="accountService"
+              class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="accountServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="accountOwnerService"
+              class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="accountOwnerServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="accountTransactionService"
+              class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="accountTransactionServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="ebillService"
+              class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="ebillServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="ebillerService"
+              class="org.springframework.transaction.interceptor.TransactionProxyFactoryBean">
+        <property name="transactionManager">
+            <ref bean="transactionManager" />
+        </property>
+        <property name="target">
+            <ref bean="ebillerServiceTarget" />
+        </property>
+        <property name="transactionAttributes">
+            <props>
+                <prop key="*">PROPAGATION_REQUIRED</prop>
+            </props>
+        </property>
+    </bean>
+</beans>

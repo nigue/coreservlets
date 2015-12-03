@@ -1,0 +1,23 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC
+        "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+	<class name="courses.hibernate.vo.EBiller" table="EBILLER">
+		<id name="ebillerId" column="EBILLER_ID">
+			<generator class="native" />
+		</id>
+		<property name="name" column="NAME" type="string" />
+		<property name="billingAddress" column="BILLING_ADDRESS"
+			type="string" />
+		<property name="phone" column="PHONE" type="string" />
+		<bag name="ebillerRegistrations" inverse="true">
+			<key column="EBILLER_ID" not-null="true" />
+			<one-to-many class="courses.hibernate.vo.EBillerRegistration" />
+		</bag>
+		<set name="ebills" inverse="true" sort="natural" >
+			<key column="EBILLER_ID" not-null="true" />
+			<one-to-many class="courses.hibernate.vo.EBill" />
+		</set>
+	</class>
+</hibernate-mapping>
