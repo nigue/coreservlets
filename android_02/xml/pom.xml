@@ -1,0 +1,71 @@
+<?xml version="1.0"?>
+<project xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd" xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance">
+    <modelVersion>4.0.0</modelVersion>
+    <parent>
+        <groupId>com.coreservlets</groupId>
+        <artifactId>android_02</artifactId>
+        <version>1.0-SNAPSHOT</version>
+    </parent>
+    <groupId>com.coreservlets</groupId>
+    <artifactId>xml</artifactId>
+    <version>1.0-SNAPSHOT</version>
+    <name>xml</name>
+    <url>http://maven.apache.org</url>
+    <packaging>apk</packaging>
+    <properties>
+        <!-- use UTF-8 for everything -->
+        <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <project.reporting.outputEncoding>UTF-8</project.reporting.outputEncoding>
+    </properties>
+
+    <dependencies>
+        <dependency>
+            <groupId>com.google.android</groupId>
+            <artifactId>android</artifactId>
+            <version>4.1.1.4</version>
+            <scope>provided</scope>
+        </dependency>
+        <dependency>
+            <groupId>joda-time</groupId>
+            <artifactId>joda-time</artifactId>
+            <version>2.3</version>
+        </dependency>
+    </dependencies>
+
+    <build>
+        <plugins>
+            <plugin>
+                <groupId>com.jayway.maven.plugins.android.generation2</groupId>
+                <artifactId>android-maven-plugin</artifactId>
+                <version>3.9.0-rc.2</version>
+                <configuration>
+                    <sdk>
+                        <platform>16</platform>
+                    </sdk>
+                    <deleteConflictingFiles>true</deleteConflictingFiles>
+                    <undeployBeforeDeploy>true</undeployBeforeDeploy>
+                </configuration>
+                <extensions>true</extensions>
+                <executions>
+                    <execution>
+                        <id>deploy-on-install</id>
+                        <phase>install</phase>
+                        <goals>
+                            <goal>deploy</goal>
+                        </goals>
+                    </execution>
+                </executions>
+            </plugin>
+            <plugin>
+                <artifactId>maven-compiler-plugin</artifactId>
+                <version>3.1</version>
+                <configuration>
+                    <source>1.6</source>
+                    <target>1.6</target>
+                </configuration>
+            </plugin>
+        </plugins>
+    </build>
+
+</project>
