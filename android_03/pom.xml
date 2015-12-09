@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0  http://maven.apache.org/maven-v4_0_0.xsd">
+
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.coreservlets</groupId>
+    <artifactId>android_03</artifactId>
+    <packaging>pom</packaging>
+    <version>1.0-SNAPSHOT</version>
+    <name>android_03</name>
+    <url>http://maven.apache.org</url>
+
+    <modules>
+    <module>events1</module>
+    <module>events2</module>
+    <module>events3</module>
+    <module>events4</module>
+    <module>events5</module>
+    <module>events6</module>
+  </modules>
+</project>
